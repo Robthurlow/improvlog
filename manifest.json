@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#00e5ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ImprovLog">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Process Improvement Log</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0d0f12;
+  --surface:  #141720;
+  --surface2: #1c2030;
+  --border:   #252c3f;
+  --accent:   #00e5ff;
+  --accent2:  #ff6b35;
+  --success:  #00ff88;
+  --text:     #dce8f0;
+  --muted:    #6b7a99;
+  --danger:   #ff4757;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: calc(var(--safe-top) + 10px) 16px 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 50;
+}
+
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+  opacity: 0.5;
+}
+
+.logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.logo-badge {
+  background: rgba(0,229,255,0.12);
+  border: 1px solid rgba(0,229,255,0.35);
+  border-radius: 4px;
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hdr-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.hdr-count strong { color: var(--accent); font-weight: 400; }
+
+/* ── NAV TABS ── */
+.tab-bar {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 11px 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── MAIN SCROLL AREA ── */
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ── VIEWS ── */
+.view { display: none; padding: 16px; }
+.view.active { display: block; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.63rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 9px 11px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 66px;
+  line-height: 1.5;
+}
+
+input[type="date"] { color-scheme: dark; }
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7a99'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+select option { background: #1c2030; }
+
+.form-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.btn-primary { background: var(--accent); color: #000; }
+.btn-primary:hover { background: #33eaff; box-shadow: 0 0 16px rgba(0,229,255,0.35); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--muted);
+  padding: 5px 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.btn-icon.edit:hover { color: var(--accent); border-color: rgba(0,229,255,0.3); background: rgba(0,229,255,0.07); }
+.btn-icon.del:hover  { color: var(--danger); border-color: rgba(255,71,87,0.3); background: rgba(255,71,87,0.07); }
+
+/* ── SUMMARY STRIP ── */
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.25rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ── SEARCH / FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  flex: 1;
+  min-width: 140px;
+  position: relative;
+}
+
+.search-wrap input { padding-left: 30px; }
+
+.search-icon {
+  position: absolute;
+  left: 9px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+select.filter-sm { width: auto; min-width: 100px; font-size: 0.8rem; padding: 8px 26px 8px 9px; }
+
+/* ── ENTRIES ── */
+.entries-list { display: flex; flex-direction: column; gap: 10px; }
+
+.entry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.entry-card.expanded { border-color: rgba(0,229,255,0.35); }
+
+.entry-head {
+  padding: 13px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.entry-head:active { background: var(--surface2); }
+
+.entry-left { flex: 1; min-width: 0; }
+
+.entry-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entry-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.chip.date  { background: rgba(107,122,153,0.15); color: var(--muted); border: 1px solid rgba(107,122,153,0.2); }
+.chip.cat   { background: rgba(0,229,255,0.08); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+.chip.tpart { background: rgba(255,107,53,0.08); color: var(--accent2); border: 1px solid rgba(255,107,53,0.2); }
+.chip.tset  { background: rgba(0,255,136,0.08); color: var(--success); border: 1px solid rgba(0,255,136,0.2); }
+
+.entry-actions-head {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.chevron {
+  display: inline-block;
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--muted);
+  transition: transform 0.2s;
+  font-size: 0.7rem;
+  line-height: 16px;
+  text-align: center;
+}
+
+.entry-card.expanded .chevron { transform: rotate(180deg); }
+
+.entry-body {
+  display: none;
+  padding: 0 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.entry-card.expanded .entry-body { display: block; }
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cmp-box {
+  background: var(--bg);
+  border-radius: 5px;
+  padding: 9px 11px;
+}
+
+.cmp-box.before { border-left: 3px solid var(--accent2); }
+.cmp-box.after  { border-left: 3px solid var(--success); }
+
+.field-lbl {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.field-val {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.detail-grid .full { grid-column: 1 / -1; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 2.2;
+}
+
+.empty-icon { font-size: 2.2rem; opacity: 0.25; margin-bottom: 8px; }
+
+/* ── MODAL ── */
+.modal-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--safe-bot);
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal-sheet {
+  background: var(--surface);
+  border-radius: 14px 14px 0 0;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 600px;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 20px 18px calc(var(--safe-bot) + 20px);
+  position: relative;
+}
+
+.modal-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 14px 14px 0 0;
+}
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.modal-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* ── EXPORT VIEW ── */
+.export-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.export-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.export-card:hover { border-color: rgba(0,229,255,0.3); background: var(--surface2); }
+
+.export-icon {
+  font-size: 1.6rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.export-info { flex: 1; }
+
+.export-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.export-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+.import-zone {
+  border: 2px dashed var(--border);
+  border-radius: 7px;
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 2;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-top: 8px;
+}
+
+.import-zone:hover { border-color: var(--accent); color: var(--text); }
+
+#import-file { display: none; }
+
+.danger-zone {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.danger-zone .section-label { color: rgba(255,71,87,0.6); }
+.danger-zone .section-label::after { background: rgba(255,71,87,0.2); }
+
+.btn-danger-full {
+  width: 100%;
+  background: rgba(255,71,87,0.08);
+  border: 1px solid rgba(255,71,87,0.3);
+  color: var(--danger);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 11px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger-full:hover { background: rgba(255,71,87,0.15); border-color: var(--danger); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: calc(var(--safe-bot) + 20px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--success);
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 20px;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.28s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── INSTALL BANNER ── */
+.install-banner {
+  display: none;
+  background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(0,229,255,0.04));
+  border: 1px solid rgba(0,229,255,0.25);
+  border-radius: 7px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  align-items: center;
+  gap: 12px;
+}
+
+.install-banner.visible { display: flex; }
+
+.install-text {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.install-text strong {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 480px) {
+  .view { padding: 20px; max-width: 700px; margin: 0 auto; }
+  .summary-strip { grid-template-columns: repeat(5, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="logo">
+    <div class="logo-badge">CNC</div>
+    ImprovLog
+  </div>
+  <div class="header-right">
+    <span class="hdr-count">Entries: <strong id="hdr-total">0</strong></span>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('log')" id="tab-log">📋 Log</button>
+  <button class="tab-btn" onclick="switchTab('new')" id="tab-new">＋ New</button>
+  <button class="tab-btn" onclick="switchTab('export')" id="tab-export">⇅ Data</button>
+</div>
+
+<div class="app-body">
+
+  <!-- ── LOG VIEW ── -->
+  <div class="view active" id="view-log">
+    <div id="install-banner" class="install-banner">
+      <div class="install-text">
+        <strong>Install App</strong>
+        Add to your home screen for full offline access
+      </div>
+      <button class="btn btn-primary" id="install-btn" style="padding:7px 14px;font-size:0.72rem;">Install</button>
+    </div>
+
+    <div id="summary-strip" class="summary-strip" style="display:none;"></div>
+
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" placeholder="Search…" oninput="renderEntries()">
+      </div>
+      <select class="filter-sm" id="cat-filter" onchange="renderEntries()">
+        <option value="">All</option>
+      </select>
+      <select class="filter-sm" id="sort-sel" onchange="renderEntries()">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+
+    <div class="entries-list" id="entries-list"></div>
+  </div>
+
+  <!-- ── NEW ENTRY VIEW ── -->
+  <div class="view" id="view-new">
+    <div class="section-label">New Entry</div>
+    <div class="form-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="f-date">
+        </div>
+        <div class="form-group">
+          <label>Category / Machine</label>
+          <input type="text" id="f-cat" placeholder="e.g. Mazak, Fixturing…">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>What I Did</label>
+          <textarea id="f-what" placeholder="Describe the change or improvement…"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>What It Improved</label>
+          <textarea id="f-improved" placeholder="Cycle time, quality, safety, scrap…" style="min-height:54px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Process Before</label>
+          <textarea id="f-before" placeholder="Old process…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Process After</label>
+          <textarea id="f-after" placeholder="New process…"></textarea>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Time Savings / Part</label>
+          <input type="text" id="f-tpart" placeholder="e.g. 45 sec, 2 min">
+        </div>
+        <div class="form-group">
+          <label>Time Savings / Setup</label>
+          <input type="text" id="f-tsetup" placeholder="e.g. 15 min, 1 hr">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>Notes (optional)</label>
+          <textarea id="f-notes" placeholder="Part #, job #, extra context…" style="min-height:50px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-ghost" onclick="clearNewForm()">Clear</button>
+        <button class="btn btn-primary" onclick="saveNew()">Save Entry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DATA VIEW ── -->
+  <div class="view" id="view-export">
+    <div class="section-label">Export</div>
+    <div class="export-options">
+      <div class="export-card" onclick="exportJSON()">
+        <div class="export-icon">📦</div>
+        <div class="export-info">
+          <div class="export-title">Export as JSON</div>
+          <div class="export-desc">Full backup. Can be re-imported to restore all entries on any device.</div>
+        </div>
+      </div>
+      <div class="export-card" onclick="exportCSV()">
+        <div class="export-icon">📊</div>
+        <div class="export-info">
+          <div class="export-title">Export as CSV</div>
+          <div class="export-desc">Open in Excel or Google Sheets for reports or presentations.</div>
+        </div>
+      </div>
+      <div class="export-card" onclick="exportText()">
+        <div class="export-icon">📄</div>
+        <div class="export-info">
+          <div class="export-title">Export as Text</div>
+          <div class="export-desc">Human-readable summary. Easy to paste into an email or doc.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:24px;">Import</div>
+    <div class="import-zone" onclick="document.getElementById('import-file').click()">
+      <div>📂</div>
+      Tap to import a JSON backup<br>
+      <span style="font-size:0.72rem;opacity:0.6;">This will merge entries — no data will be lost</span>
+    </div>
+    <input type="file" id="import-file" accept=".json" onchange="importJSON(event)">
+
+    <div class="danger-zone">
+      <div class="section-label">Danger Zone</div>
+      <button class="btn-danger-full" onclick="clearAll()">Delete All Entries</button>
+    </div>
+  </div>
+
+</div><!-- end app-body -->
+
+<!-- ── EDIT MODAL ── -->
+<div class="modal-backdrop" id="edit-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Edit Entry</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="e-date">
+      </div>
+      <div class="form-group">
+        <label>Category / Machine</label>
+        <input type="text" id="e-cat">
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:10px;">
+      <div class="form-group full">
+        <label>What I Did</label>
+        <textarea id="e-what"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label>What It Improved</label>
+        <textarea id="e-improved" style="min-height:54px;"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Process Before</label>
+        <textarea id="e-before"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Process After</label>
+        <textarea id="e-after"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Time / Part</label>
+        <input type="text" id="e-tpart">
+      </div>
+      <div class="form-group">
+        <label>Time / Setup</label>
+        <input type="text" id="e-tsetup">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label>Notes</label>
+        <textarea id="e-notes" style="min-height:50px;"></textarea>
+      </div>
+    </div>
+    <div class="form-actions" style="margin-top:14px;">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+const KEY = 'cnc_improv_v2';
+let entries = [];
+let editingId = null;
+let deferredInstall = null;
+
+function load() {
+  try { entries = JSON.parse(localStorage.getItem(KEY)) || []; }
+  catch { entries = []; }
+}
+
+function persist() {
+  localStorage.setItem(KEY, JSON.stringify(entries));
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fmtDate(d) {
+  if (!d) return 'No date';
+  try { const [y,m,dd] = d.split('-'); return `${m}/${dd}/${y}`; }
+  catch { return d; }
+}
+
+// ── TABS ─────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'log') renderAll();
+}
+
+// ── SAVE NEW ─────────────────────────────────────────────────────
+function saveNew() {
+  const what = document.getElementById('f-what').value.trim();
+  if (!what) { showToast('Fill in "What I Did" at minimum', '#ff4757'); return; }
+  const en = {
+    id: uid(),
+    date: document.getElementById('f-date').value,
+    category: document.getElementById('f-cat').value.trim(),
+    what,
+    improved: document.getElementById('f-improved').value.trim(),
+    before: document.getElementById('f-before').value.trim(),
+    after: document.getElementById('f-after').value.trim(),
+    timePart: document.getElementById('f-tpart').value.trim(),
+    timeSetup: document.getElementById('f-tsetup').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    created: Date.now()
+  };
+  entries.unshift(en);
+  persist();
+  clearNewForm();
+  showToast('Entry saved!');
+  switchTab('log');
+}
+
+function clearNewForm() {
+  ['f-date','f-cat','f-what','f-improved','f-before','f-after','f-tpart','f-tsetup','f-notes']
+    .forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-date').value = today();
+}
+
+function today() { return new Date().toISOString().split('T')[0]; }
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderAll() {
+  updateHeader();
+  renderSummary();
+  renderCatFilter();
+  renderEntries();
+}
+
+function updateHeader() {
+  document.getElementById('hdr-total').textContent = entries.length;
+}
+
+function renderSummary() {
+  const strip = document.getElementById('summary-strip');
+  if (entries.length === 0) { strip.style.display = 'none'; return; }
+  strip.style.display = 'grid';
+  const cats = new Set(entries.map(e=>e.category).filter(Boolean)).size;
+  const wp = entries.filter(e=>e.timePart && e.timePart.toLowerCase()!=='none').length;
+  const ws = entries.filter(e=>e.timeSetup && e.timeSetup.toLowerCase()!=='none').length;
+  strip.innerHTML = `
+    <div class="stat-box"><div class="stat-label">Total</div><div class="stat-val">${entries.length}</div></div>
+    <div class="stat-box"><div class="stat-label">Cats</div><div class="stat-val">${cats}</div></div>
+    <div class="stat-box"><div class="stat-label">Part Savings</div><div class="stat-val">${wp}</div></div>
+    <div class="stat-box"><div class="stat-label">Setup Savings</div><div class="stat-val">${ws}</div></div>
+    <div class="stat-box"><div class="stat-label">Total Savings</div><div class="stat-val">${wp+ws}</div></div>
+  `;
+}
+
+function renderCatFilter() {
+  const sel = document.getElementById('cat-filter');
+  const cur = sel.value;
+  const cats = [...new Set(entries.map(e=>e.category).filter(Boolean))].sort();
+  sel.innerHTML = '<option value="">All</option>' +
+    cats.map(c=>`<option value="${esc(c)}"${c===cur?' selected':''}>${esc(c)}</option>`).join('');
+}
+
+function renderEntries() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const cat = document.getElementById('cat-filter').value;
+  const sort = document.getElementById('sort-sel').value;
+
+  let list = [...entries];
+  if (cat) list = list.filter(e=>e.category===cat);
+  if (q) list = list.filter(e=>
+    [e.what,e.improved,e.before,e.after,e.category,e.notes].join(' ').toLowerCase().includes(q)
+  );
+  sort==='oldest'
+    ? list.sort((a,b)=>(a.date||'')>(b.date||'')?1:-1)
+    : list.sort((a,b)=>(a.date||'')<(b.date||'')?1:-1);
+
+  const container = document.getElementById('entries-list');
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">⚙</div>
+      ${entries.length===0?'No entries yet.<br>Tap ＋ New to add your first improvement.':'No entries match your search.'}
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = list.map(en => `
+    <div class="entry-card" id="card-${en.id}">
+      <div class="entry-head" onclick="toggleCard('${en.id}')">
+        <div class="entry-left">
+          <div class="entry-title">${esc(en.what)||'—'}</div>
+          <div class="entry-chips">
+            <span class="chip date">${fmtDate(en.date)}</span>
+            ${en.category?`<span class="chip cat">${esc(en.category)}</span>`:''}
+            ${en.timePart&&en.timePart.toLowerCase()!=='none'?`<span class="chip tpart">⏱${esc(en.timePart)}/pt</span>`:''}
+            ${en.timeSetup&&en.timeSetup.toLowerCase()!=='none'?`<span class="chip tset">⏱${esc(en.timeSetup)}/su</span>`:''}
+          </div>
+        </div>
+        <div class="entry-actions-head" onclick="event.stopPropagation()">
+          <button class="btn-icon edit" onclick="openEdit('${en.id}')">Edit</button>
+          <button class="btn-icon del" onclick="deleteEntry('${en.id}')">Del</button>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="entry-body">
+        ${en.improved?`<div style="margin-top:10px;"><div class="field-lbl">What It Improved</div><div class="field-val">${esc(en.improved)}</div></div>`:''}
+        <div class="compare-row">
+          <div class="cmp-box before"><div class="field-lbl">Before</div><div class="field-val">${esc(en.before)||'<span style="color:var(--muted)">—</span>'}</div></div>
+          <div class="cmp-box after"><div class="field-lbl">After</div><div class="field-val">${esc(en.after)||'<span style="color:var(--muted)">—</span>'}</div></div>
+        </div>
+        ${(en.timePart||en.timeSetup)?`
+        <div class="detail-grid">
+          <div><div class="field-lbl">Time / Part</div><div class="field-val">${esc(en.timePart)||'—'}</div></div>
+          <div><div class="field-lbl">Time / Setup</div><div class="field-val">${esc(en.timeSetup)||'—'}</div></div>
+        </div>`:''}
+        ${en.notes?`<div style="margin-top:10px;"><div class="field-lbl">Notes</div><div class="field-val">${esc(en.notes)}</div></div>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCard(id) {
+  document.getElementById('card-'+id)?.classList.toggle('expanded');
+}
+
+// ── EDIT ─────────────────────────────────────────────────────────
+function openEdit(id) {
+  const en = entries.find(x=>x.id===id); if(!en) return;
+  editingId = id;
+  document.getElementById('e-date').value = en.date||'';
+  document.getElementById('e-cat').value = en.category||'';
+  document.getElementById('e-what').value = en.what||'';
+  document.getElementById('e-improved').value = en.improved||'';
+  document.getElementById('e-before').value = en.before||'';
+  document.getElementById('e-after').value = en.after||'';
+  document.getElementById('e-tpart').value = en.timePart||'';
+  document.getElementById('e-tsetup').value = en.timeSetup||'';
+  document.getElementById('e-notes').value = en.notes||'';
+  document.getElementById('edit-modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('edit-modal').classList.remove('open');
+  editingId = null;
+}
+
+function saveEdit() {
+  if (!editingId) return;
+  const idx = entries.findIndex(x=>x.id===editingId); if(idx===-1) return;
+  entries[idx] = { ...entries[idx],
+    date: document.getElementById('e-date').value,
+    category: document.getElementById('e-cat').value.trim(),
+    what: document.getElementById('e-what').value.trim(),
+    improved: document.getElementById('e-improved').value.trim(),
+    before: document.getElementById('e-before').value.trim(),
+    after: document.getElementById('e-after').value.trim(),
+    timePart: document.getElementById('e-tpart').value.trim(),
+    timeSetup: document.getElementById('e-tsetup').value.trim(),
+    notes: document.getElementById('e-notes').value.trim(),
+  };
+  persist(); closeModal(); renderAll();
+  showToast('Changes saved!');
+}
+
+function deleteEntry(id) {
+  if (!confirm('Delete this entry?')) return;
+  entries = entries.filter(x=>x.id!==id);
+  persist(); renderAll();
+  showToast('Deleted', '#ff6b35');
+}
+
+// ── EXPORT ───────────────────────────────────────────────────────
+function dl(content, filename, mime) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type: mime}));
+  a.download = filename;
+  a.click();
+}
+
+function exportJSON() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  dl(JSON.stringify(entries, null, 2), `improv-log-${today()}.json`, 'application/json');
+  showToast('JSON exported!');
+}
+
+function exportCSV() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  const cols = ['date','category','what','improved','before','after','timePart','timeSetup','notes'];
+  const headers = ['Date','Category','What I Did','What It Improved','Process Before','Process After','Time/Part','Time/Setup','Notes'];
+  const rows = entries.map(e => cols.map(c => `"${(e[c]||'').replace(/"/g,'""')}"`).join(','));
+  dl([headers.join(','), ...rows].join('\n'), `improv-log-${today()}.csv`, 'text/csv');
+  showToast('CSV exported!');
+}
+
+function exportText() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  const lines = entries.map((e,i) => [
+    `=== ${i+1}. ${e.what||'Untitled'} ===`,
+    `Date: ${fmtDate(e.date)}`,
+    e.category ? `Category: ${e.category}` : '',
+    e.improved ? `Improved: ${e.improved}` : '',
+    e.before ? `Before: ${e.before}` : '',
+    e.after ? `After: ${e.after}` : '',
+    e.timePart ? `Time/Part: ${e.timePart}` : '',
+    e.timeSetup ? `Time/Setup: ${e.timeSetup}` : '',
+    e.notes ? `Notes: ${e.notes}` : '',
+    ''
+  ].filter(Boolean).join('\n')).join('\n');
+  dl(`PROCESS IMPROVEMENT LOG\nExported: ${new Date().toLocaleDateString()}\n\n${lines}`,
+     `improv-log-${today()}.txt`, 'text/plain');
+  showToast('Text exported!');
+}
+
+function importJSON(evt) {
+  const file = evt.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error();
+      const existingIds = new Set(entries.map(x=>x.id));
+      const merged = imported.filter(x=>!existingIds.has(x.id));
+      entries = [...entries, ...merged];
+      persist(); renderAll();
+      showToast(`Imported ${merged.length} entries!`);
+    } catch {
+      showToast('Invalid backup file', '#ff4757');
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+}
+
+function clearAll() {
+  if (!entries.length) { showToast('Nothing to delete', '#ff6b35'); return; }
+  if (!confirm(`Delete ALL ${entries.length} entries? This cannot be undone.`)) return;
+  entries = []; persist(); renderAll();
+  showToast('All entries deleted', '#ff4757');
+}
+
+// ── TOAST ────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, bg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = bg || 'var(--success)';
+  t.style.color = bg ? '#fff' : '#000';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ── PWA INSTALL ───────────────────────────────────────────────────
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredInstall = e;
+  document.getElementById('install-banner').classList.add('visible');
+});
+
+document.getElementById('install-btn').addEventListener('click', () => {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(r => {
+    if (r.outcome === 'accepted') {
+      document.getElementById('install-banner').classList.remove('visible');
+      showToast('App installed! 🎉');
+    }
+    deferredInstall = null;
+  });
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-banner').classList.remove('visible');
+});
+
+// Close modal on backdrop tap
+document.getElementById('edit-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ── SERVICE WORKER ────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+document.getElementById('f-date').value = today();
+load();
+renderAll();
+</script>
+</body>
+</html>

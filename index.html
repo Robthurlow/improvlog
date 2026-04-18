@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#00e5ff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="ImprovLog">
+<title>ImprovLog</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0f12;
+  --surface: #141720;
+  --surface2: #1c2030;
+  --border: #252c3f;
+  --accent: #00e5ff;
+  --accent2: #ff6b35;
+  --success: #00ff88;
+  --text: #dce8f0;
+  --muted: #6b7a99;
+  --danger: #ff4757;
+}
+
+html { height: 100%; }
+
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* HEADER */
+.hdr {
+  background: var(--surface);
+  border-bottom: 2px solid var(--accent);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.hdr-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hdr-count {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.hdr-count b { color: var(--accent); }
+
+/* TABS */
+.tabs {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.tab {
+  flex: 1;
+  padding: 16px 4px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.tab.on {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: rgba(0,229,255,0.04);
+}
+
+/* SCROLL BODY */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* VIEWS */
+.view { display: none; padding: 16px; }
+.view.on { display: block; }
+
+/* FORM */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.row1 { margin-bottom: 12px; }
+
+.lbl {
+  display: block;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+}
+
+input[type="date"] { color-scheme: dark; }
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+  line-height: 1.5;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.form-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+/* BUTTONS — plain <button> with no tricks */
+.btn-save {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  padding: 13px 24px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: block;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-clear {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 13px 20px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.stat-n {
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-l {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+/* SEARCH */
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filters input {
+  flex: 1;
+}
+
+/* ENTRY CARDS */
+.entry {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.entry-head {
+  padding: 13px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.entry-left { flex: 1; min-width: 0; }
+
+.entry-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.chip {
+  font-size: 0.65rem;
+  padding: 2px 7px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.chip-date { background: rgba(107,122,153,0.15); color: var(--muted); border: 1px solid rgba(107,122,153,0.2); }
+.chip-cat  { background: rgba(0,229,255,0.08); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+.chip-tp   { background: rgba(255,107,53,0.08); color: var(--accent2); border: 1px solid rgba(255,107,53,0.2); }
+.chip-ts   { background: rgba(0,255,136,0.08); color: var(--success); border: 1px solid rgba(0,255,136,0.2); }
+
+.entry-arrow {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.entry.open .entry-arrow { transform: rotate(180deg); }
+
+.entry-btns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.btn-edit, .btn-del {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.btn-edit { color: var(--accent); }
+.btn-del  { color: var(--danger); }
+
+.entry-body {
+  display: none;
+  padding: 0 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.entry.open .entry-body { display: block; }
+
+.cmp {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cmp-box {
+  background: var(--bg);
+  border-radius: 4px;
+  padding: 9px 11px;
+}
+
+.cmp-box.before { border-left: 3px solid var(--accent2); }
+.cmp-box.after  { border-left: 3px solid var(--success); }
+
+.fl { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 4px; font-family: 'Rajdhani', sans-serif; font-weight: 700; }
+.fv { font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; }
+
+.detail2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.detail1 { margin-top: 10px; }
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 2;
+}
+
+/* EXPORT */
+.exp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  -webkit-appearance: none;
+}
+
+.exp-icon { font-size: 1.6rem; width: 36px; text-align: center; flex-shrink: 0; }
+.exp-title { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; margin-bottom: 2px; }
+.exp-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+.imp-zone {
+  border: 2px dashed var(--border);
+  border-radius: 6px;
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 2;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn-danger {
+  width: 100%;
+  background: rgba(255,71,87,0.08);
+  border: 1px solid rgba(255,71,87,0.3);
+  color: var(--danger);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 13px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.sec-lbl {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sec-lbl::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* MODAL */
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 100;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.modal-bg.on { display: flex; }
+
+.modal {
+  background: var(--surface);
+  border-top: 2px solid var(--accent2);
+  border-radius: 12px 12px 0 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px 16px 32px;
+}
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.modal-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* TOAST */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--success);
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 20px;
+  z-index: 999;
+  opacity: 0;
+  transition: all 0.25s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+#import-file { display: none; }
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-title">⚙ ImprovLog</div>
+  <div class="hdr-count">Entries: <b id="hdr-n">0</b></div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" id="t-log">📋 Log</button>
+  <button class="tab" id="t-new">＋ New</button>
+  <button class="tab" id="t-data">⇅ Data</button>
+</div>
+
+<div class="body">
+
+  <!-- LOG VIEW -->
+  <div class="view on" id="v-log">
+    <div class="stats" id="stats" style="display:none"></div>
+    <div class="filters">
+      <input type="text" id="search" placeholder="Search entries…">
+    </div>
+    <div id="list"></div>
+  </div>
+
+  <!-- NEW VIEW -->
+  <div class="view" id="v-new">
+    <div class="card">
+      <div class="row2">
+        <div>
+          <label class="lbl">Date</label>
+          <input type="date" id="f-date">
+        </div>
+        <div>
+          <label class="lbl">Category / Machine</label>
+          <input type="text" id="f-cat" placeholder="e.g. Mazak, Fixturing…">
+        </div>
+      </div>
+      <div class="row1">
+        <label class="lbl">What I Did</label>
+        <textarea id="f-what" placeholder="Describe the improvement you made…"></textarea>
+      </div>
+      <div class="row1">
+        <label class="lbl">What It Improved</label>
+        <textarea id="f-improved" placeholder="Cycle time, quality, safety, scrap…" style="min-height:56px;"></textarea>
+      </div>
+      <div class="divider"></div>
+      <div class="row2">
+        <div>
+          <label class="lbl">Process Before</label>
+          <textarea id="f-before" placeholder="Old process…"></textarea>
+        </div>
+        <div>
+          <label class="lbl">Process After</label>
+          <textarea id="f-after" placeholder="New process…"></textarea>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="row2">
+        <div>
+          <label class="lbl">Time Savings / Part</label>
+          <input type="text" id="f-tp" placeholder="e.g. 45 sec, 2 min">
+        </div>
+        <div>
+          <label class="lbl">Time Savings / Setup</label>
+          <input type="text" id="f-ts" placeholder="e.g. 15 min, 1 hr">
+        </div>
+      </div>
+      <div class="row1" style="margin-top:12px;">
+        <label class="lbl">Notes (optional)</label>
+        <textarea id="f-notes" placeholder="Part #, job #, extra context…" style="min-height:52px;"></textarea>
+      </div>
+      <div class="form-btns">
+        <button class="btn-clear" id="btn-clear">Clear</button>
+        <button class="btn-save" id="btn-save">Save Entry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA VIEW -->
+  <div class="view" id="v-data">
+    <div class="sec-lbl">Export</div>
+    <button class="exp-card" id="btn-json">
+      <div class="exp-icon">📦</div>
+      <div>
+        <div class="exp-title">Export JSON</div>
+        <div class="exp-desc">Full backup — re-importable on any device</div>
+      </div>
+    </button>
+    <button class="exp-card" id="btn-csv">
+      <div class="exp-icon">📊</div>
+      <div>
+        <div class="exp-title">Export CSV</div>
+        <div class="exp-desc">Open in Excel or Google Sheets</div>
+      </div>
+    </button>
+    <button class="exp-card" id="btn-txt">
+      <div class="exp-icon">📄</div>
+      <div>
+        <div class="exp-title">Export Text</div>
+        <div class="exp-desc">Readable summary, easy to paste anywhere</div>
+      </div>
+    </button>
+
+    <div class="sec-lbl">Import</div>
+    <div class="imp-zone" id="imp-zone">
+      📂 Tap to import a JSON backup<br>
+      <span style="font-size:0.72rem;opacity:0.6;">Merges with existing entries — nothing deleted</span>
+    </div>
+    <input type="file" id="import-file" accept=".json">
+
+    <div class="sec-lbl" style="color:rgba(255,71,87,0.6);">Danger Zone</div>
+    <button class="btn-danger" id="btn-del-all">Delete All Entries</button>
+  </div>
+
+</div><!-- end body -->
+
+<!-- EDIT MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Edit Entry</div>
+    <div class="row2">
+      <div>
+        <label class="lbl">Date</label>
+        <input type="date" id="e-date">
+      </div>
+      <div>
+        <label class="lbl">Category / Machine</label>
+        <input type="text" id="e-cat">
+      </div>
+    </div>
+    <div class="row1" style="margin-top:10px;">
+      <label class="lbl">What I Did</label>
+      <textarea id="e-what"></textarea>
+    </div>
+    <div class="row1">
+      <label class="lbl">What It Improved</label>
+      <textarea id="e-improved" style="min-height:56px;"></textarea>
+    </div>
+    <div class="row2">
+      <div>
+        <label class="lbl">Process Before</label>
+        <textarea id="e-before"></textarea>
+      </div>
+      <div>
+        <label class="lbl">Process After</label>
+        <textarea id="e-after"></textarea>
+      </div>
+    </div>
+    <div class="row2" style="margin-top:10px;">
+      <div>
+        <label class="lbl">Time / Part</label>
+        <input type="text" id="e-tp">
+      </div>
+      <div>
+        <label class="lbl">Time / Setup</label>
+        <input type="text" id="e-ts">
+      </div>
+    </div>
+    <div class="row1" style="margin-top:10px;">
+      <label class="lbl">Notes</label>
+      <textarea id="e-notes" style="min-height:52px;"></textarea>
+    </div>
+    <div class="form-btns" style="margin-top:14px;">
+      <button class="btn-clear" id="btn-cancel">Cancel</button>
+      <button class="btn-save" id="btn-save-edit">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+const KEY = 'cnc_v3';
+let entries = [];
+let editId = null;
+
+// ── STORAGE ──────────────────────────────────────────────────────
+function load() {
+  try { entries = JSON.parse(localStorage.getItem(KEY)) || []; }
+  catch(e) { entries = []; }
+}
+function save() { localStorage.setItem(KEY, JSON.stringify(entries)); }
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function today() { return new Date().toISOString().split('T')[0]; }
+function fdate(d) {
+  if (!d) return 'No date';
+  try { const [y,m,dd] = d.split('-'); return `${m}/${dd}/${y}`; } catch(e) { return d; }
+}
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── TABS ─────────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.getElementById('t-' + name).classList.add('on');
+  document.getElementById('v-' + name).classList.add('on');
+  if (name === 'log') renderLog();
+}
+
+document.getElementById('t-log').addEventListener('click', function() { showTab('log'); });
+document.getElementById('t-new').addEventListener('click', function() { showTab('new'); });
+document.getElementById('t-data').addEventListener('click', function() { showTab('data'); });
+
+// ── NEW ENTRY ────────────────────────────────────────────────────
+document.getElementById('btn-save').addEventListener('click', function() {
+  var what = document.getElementById('f-what').value.trim();
+  if (!what) { toast('Fill in "What I Did" first', '#ff4757'); return; }
+  entries.unshift({
+    id: uid(),
+    date: document.getElementById('f-date').value,
+    cat: document.getElementById('f-cat').value.trim(),
+    what: what,
+    improved: document.getElementById('f-improved').value.trim(),
+    before: document.getElementById('f-before').value.trim(),
+    after: document.getElementById('f-after').value.trim(),
+    tp: document.getElementById('f-tp').value.trim(),
+    ts: document.getElementById('f-ts').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    created: Date.now()
+  });
+  save();
+  clearForm();
+  toast('Entry saved!');
+  showTab('log');
+});
+
+document.getElementById('btn-clear').addEventListener('click', clearForm);
+
+function clearForm() {
+  ['f-date','f-cat','f-what','f-improved','f-before','f-after','f-tp','f-ts','f-notes'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('f-date').value = today();
+}
+
+// ── RENDER LOG ───────────────────────────────────────────────────
+function renderLog() {
+  var q = (document.getElementById('search').value || '').toLowerCase();
+  var list = entries.filter(function(e) {
+    if (!q) return true;
+    return [e.what,e.improved,e.before,e.after,e.cat,e.notes].join(' ').toLowerCase().indexOf(q) >= 0;
+  });
+
+  // Stats
+  var stats = document.getElementById('stats');
+  if (entries.length === 0) {
+    stats.style.display = 'none';
+  } else {
+    stats.style.display = 'grid';
+    var cats = {};
+    entries.forEach(function(e) { if(e.cat) cats[e.cat] = 1; });
+    var wp = entries.filter(function(e){ return e.tp && e.tp.toLowerCase() !== 'none'; }).length;
+    var ws = entries.filter(function(e){ return e.ts && e.ts.toLowerCase() !== 'none'; }).length;
+    stats.innerHTML =
+      '<div class="stat"><div class="stat-n">' + entries.length + '</div><div class="stat-l">Total</div></div>' +
+      '<div class="stat"><div class="stat-n">' + Object.keys(cats).length + '</div><div class="stat-l">Categories</div></div>' +
+      '<div class="stat"><div class="stat-n">' + (wp+ws) + '</div><div class="stat-l">W/ Savings</div></div>';
+  }
+
+  document.getElementById('hdr-n').textContent = entries.length;
+
+  var container = document.getElementById('list');
+  if (list.length === 0) {
+    container.innerHTML = '<div class="empty">' +
+      (entries.length === 0 ? '⚙<br>No entries yet.<br>Tap ＋ New to add your first improvement.' : 'No results for your search.') +
+      '</div>';
+    return;
+  }
+
+  container.innerHTML = list.map(function(e) {
+    return '<div class="entry" id="en-' + e.id + '">' +
+      '<button class="entry-head" data-id="' + e.id + '">' +
+        '<div class="entry-left">' +
+          '<div class="entry-title">' + esc(e.what) + '</div>' +
+          '<div class="chips">' +
+            '<span class="chip chip-date">' + fdate(e.date) + '</span>' +
+            (e.cat ? '<span class="chip chip-cat">' + esc(e.cat) + '</span>' : '') +
+            (e.tp && e.tp.toLowerCase()!=='none' ? '<span class="chip chip-tp">⏱' + esc(e.tp) + '/pt</span>' : '') +
+            (e.ts && e.ts.toLowerCase()!=='none' ? '<span class="chip chip-ts">⏱' + esc(e.ts) + '/su</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="entry-btns" style="display:flex;gap:4px;flex-shrink:0;" onclick="event.stopPropagation()">' +
+          '<button class="btn-edit" data-edit="' + e.id + '">Edit</button>' +
+          '<button class="btn-del" data-del="' + e.id + '">Del</button>' +
+        '</div>' +
+        '<span class="entry-arrow">▾</span>' +
+      '</button>' +
+      '<div class="entry-body">' +
+        (e.improved ? '<div class="detail1"><div class="fl">What It Improved</div><div class="fv">' + esc(e.improved) + '</div></div>' : '') +
+        '<div class="cmp">' +
+          '<div class="cmp-box before"><div class="fl">Before</div><div class="fv">' + (esc(e.before)||'—') + '</div></div>' +
+          '<div class="cmp-box after"><div class="fl">After</div><div class="fv">' + (esc(e.after)||'—') + '</div></div>' +
+        '</div>' +
+        ((e.tp||e.ts) ? '<div class="detail2"><div><div class="fl">Time / Part</div><div class="fv">' + (esc(e.tp)||'—') + '</div></div><div><div class="fl">Time / Setup</div><div class="fv">' + (esc(e.ts)||'—') + '</div></div></div>' : '') +
+        (e.notes ? '<div class="detail1"><div class="fl">Notes</div><div class="fv">' + esc(e.notes) + '</div></div>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+// Delegated click handler for the list
+document.getElementById('list').addEventListener('click', function(evt) {
+  // Edit button
+  var editEl = evt.target.closest('[data-edit]');
+  if (editEl) { openEdit(editEl.dataset.edit); return; }
+
+  // Delete button
+  var delEl = evt.target.closest('[data-del]');
+  if (delEl) { deleteEntry(delEl.dataset.del); return; }
+
+  // Toggle card
+  var headEl = evt.target.closest('.entry-head');
+  if (headEl) {
+    var card = document.getElementById('en-' + headEl.dataset.id);
+    if (card) card.classList.toggle('open');
+  }
+});
+
+document.getElementById('search').addEventListener('input', renderLog);
+
+// ── EDIT ─────────────────────────────────────────────────────────
+function openEdit(id) {
+  var e = entries.find(function(x){ return x.id===id; });
+  if (!e) return;
+  editId = id;
+  document.getElementById('e-date').value = e.date||'';
+  document.getElementById('e-cat').value = e.cat||'';
+  document.getElementById('e-what').value = e.what||'';
+  document.getElementById('e-improved').value = e.improved||'';
+  document.getElementById('e-before').value = e.before||'';
+  document.getElementById('e-after').value = e.after||'';
+  document.getElementById('e-tp').value = e.tp||'';
+  document.getElementById('e-ts').value = e.ts||'';
+  document.getElementById('e-notes').value = e.notes||'';
+  document.getElementById('modal').classList.add('on');
+}
+
+document.getElementById('btn-save-edit').addEventListener('click', function() {
+  if (!editId) return;
+  var idx = entries.findIndex(function(x){ return x.id===editId; });
+  if (idx === -1) return;
+  entries[idx] = Object.assign({}, entries[idx], {
+    date: document.getElementById('e-date').value,
+    cat: document.getElementById('e-cat').value.trim(),
+    what: document.getElementById('e-what').value.trim(),
+    improved: document.getElementById('e-improved').value.trim(),
+    before: document.getElementById('e-before').value.trim(),
+    after: document.getElementById('e-after').value.trim(),
+    tp: document.getElementById('e-tp').value.trim(),
+    ts: document.getElementById('e-ts').value.trim(),
+    notes: document.getElementById('e-notes').value.trim()
+  });
+  save(); closeModal(); renderLog();
+  toast('Changes saved!');
+});
+
+document.getElementById('btn-cancel').addEventListener('click', closeModal);
+
+document.getElementById('modal').addEventListener('click', function(evt) {
+  if (evt.target === this) closeModal();
+});
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('on');
+  editId = null;
+}
+
+function deleteEntry(id) {
+  if (!confirm('Delete this entry?')) return;
+  entries = entries.filter(function(x){ return x.id!==id; });
+  save(); renderLog();
+  toast('Deleted', '#ff6b35');
+}
+
+// ── EXPORT ───────────────────────────────────────────────────────
+function dl(content, name, type) {
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type:type}));
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+document.getElementById('btn-json').addEventListener('click', function() {
+  if (!entries.length) { toast('No entries', '#ff6b35'); return; }
+  dl(JSON.stringify(entries,null,2), 'improvlog-' + today() + '.json', 'application/json');
+  toast('JSON exported!');
+});
+
+document.getElementById('btn-csv').addEventListener('click', function() {
+  if (!entries.length) { toast('No entries', '#ff6b35'); return; }
+  var cols = ['date','cat','what','improved','before','after','tp','ts','notes'];
+  var hdrs = ['Date','Category','What I Did','What It Improved','Before','After','Time/Part','Time/Setup','Notes'];
+  var rows = entries.map(function(e) {
+    return cols.map(function(c){ return '"' + (e[c]||'').replace(/"/g,'""') + '"'; }).join(',');
+  });
+  dl([hdrs.join(',')].concat(rows).join('\n'), 'improvlog-' + today() + '.csv', 'text/csv');
+  toast('CSV exported!');
+});
+
+document.getElementById('btn-txt').addEventListener('click', function() {
+  if (!entries.length) { toast('No entries', '#ff6b35'); return; }
+  var text = entries.map(function(e,i) {
+    return [
+      '=== ' + (i+1) + '. ' + (e.what||'Untitled') + ' ===',
+      'Date: ' + fdate(e.date),
+      e.cat ? 'Category: ' + e.cat : '',
+      e.improved ? 'Improved: ' + e.improved : '',
+      e.before ? 'Before: ' + e.before : '',
+      e.after ? 'After: ' + e.after : '',
+      e.tp ? 'Time/Part: ' + e.tp : '',
+      e.ts ? 'Time/Setup: ' + e.ts : '',
+      e.notes ? 'Notes: ' + e.notes : '',
+      ''
+    ].filter(Boolean).join('\n');
+  }).join('\n');
+  dl('PROCESS IMPROVEMENT LOG\nExported: ' + new Date().toLocaleDateString() + '\n\n' + text,
+     'improvlog-' + today() + '.txt', 'text/plain');
+  toast('Text exported!');
+});
+
+document.getElementById('imp-zone').addEventListener('click', function() {
+  document.getElementById('import-file').click();
+});
+
+document.getElementById('import-file').addEventListener('change', function(evt) {
+  var file = evt.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      var imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error();
+      var ids = new Set(entries.map(function(x){ return x.id; }));
+      var merged = imported.filter(function(x){ return !ids.has(x.id); });
+      entries = entries.concat(merged);
+      save(); renderLog();
+      toast('Imported ' + merged.length + ' entries!');
+    } catch(err) {
+      toast('Invalid file', '#ff4757');
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+});
+
+document.getElementById('btn-del-all').addEventListener('click', function() {
+  if (!entries.length) { toast('Nothing to delete', '#ff6b35'); return; }
+  if (!confirm('Delete ALL ' + entries.length + ' entries? Cannot be undone.')) return;
+  entries = []; save(); renderLog();
+  toast('All deleted', '#ff4757');
+});
+
+// ── TOAST ────────────────────────────────────────────────────────
+var toastTimer;
+function toast(msg, bg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = bg || 'var(--success)';
+  t.style.color = bg ? '#fff' : '#000';
+  t.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function() { t.classList.remove('on'); }, 2400);
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+load();
+document.getElementById('f-date').value = today();
+renderLog();
+</script>
+</body>
+</html>

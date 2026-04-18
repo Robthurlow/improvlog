@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#00e5ff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ImprovLog">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIlByb2Nlc3MgSW1wcm92ZW1lbnQgTG9nIiwgInNob3J0X25hbWUiOiAiSW1wcm92TG9nIiwgImRlc2NyaXB0aW9uIjogIkNOQyBNYWNoaW5pc3QgcHJvY2VzcyBpbXByb3ZlbWVudCB0cmFja2VyIiwgInN0YXJ0X3VybCI6ICIuL2luZGV4Lmh0bWwiLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiIzBkMGYxMiIsICJ0aGVtZV9jb2xvciI6ICIjMDBlNWZmIiwgIm9yaWVudGF0aW9uIjogImFueSIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQVlBQUFCUzNHd0hBQUFKR0VsRVFWUjRuTzJkUFU0bFJ4U0Y3MWlUSWt1R3dKcU1sSkNFTFhrRm5qWE1EcndsRWtKU01zc0JTSlpZZ0oyNFRLdnB2M3BkOS9lY0w3RXRtZmVhNnZQVnZkWGQxWHk1K3ZtWGY0UVFVSDd5UGdCQ1BLRUFCQm9LUUtDaEFBUWFDa0Nnb1FBRUdncEFvS0VBQkJvS1FLQ2hBQVFhQ2tDZ29RQUVHZ3BBb0tFQUJKcXYzZ2RRbWZmbnR5R2ZjM1YzUGVSenlHZStjRC9BZVVZRnZSZUtjUjRLMElsWDJJOUNLZnFnQUFlSUh2bzFLTU0rRkdDQlVZRy91YjhkOGptdlR5OURQb2RDZklZQ1RMZzArS09DM3N1bFlsQ0VEK0FGNkEyOVY5aVAwaXNGdWd5d0F2UUVQM3JvMStpUkFWVUVPQUdPQmo5cjZOYzRLZ09hQ0RBQ0hBbCt0ZEN2Y1VRR0ZCSEtDOERncjBNUmlndXdGMzdVNE0vWkU2R3lCQ1VGWVBBdkExR0VVZ0l3K0dOQUVxR01BRnZoWi9BdlkwdUVLaEtVRUdBdC9BeitHTlpFcUNCQmFnRTQ2OXRSdFJxa0ZZQ3p2Zy9WcWtIS0xaRU12eDlyWTV6MWtmRlVGWUF0VHh5cXRFUnBCT0NzSDVQc0xWR0tGb2poajB2MmxpaThBQXgvZkRKTEVGb0FoajhQV1NVSXV3WllHamdHUHdkTDY0S29hNEtRRllEaHo4M1N1WXBhQ2NJSndQRFhJSXNFb1FSQURQL3IwOHVqOXpGb2tVR0NNQUlnaDU4UytCRkdBRUk4Q0NFQTh1eS85dCtWaUZ3RjNBVmcrREdJS29HckFJamgzNks2R0JFbGNLOEFVeERDdnhkeVJBazhjUlBBMjN3U0I4OHN1QWlBMnZvY25kMFJxNENYQk9ZQ01QeEVKSTRFN21zQWhQQmZBb0l3RWM2OXFRQ29mVDlDbUVkaG5SSFhDaEJoQnREbVRQZ1J4UEhPZ0prQWM3TzlmL0VzSUVwZ1dRVk1CR0RyUTNxeHlveExDMlE5KzNzRWNlUjNaai8rSTNoMUJGKzF2eURLN0Q4L29UZjN0dzlleHhLUmlOWHEvZmxOZlN1bCtwN2dLTDMvMWdrZUxZTldtQ3lQMDJ1Q21POG4xaFpBdFFKRW1mMzN5RklkWHA5ZUhzOGNXOFJaZmcvdEtxRGVBazNKY3VWbkdwVGV3RVVMV2JUajJlUG0vdmJpUHdCK0NXb0NaSm45OStpcERoWmgyNnNDMlFKL0JNMHFZRllCdkdmL20vdmJoeEhoT0ZNZHRCZ2RldS9meTdJS3FBaFFaZmJmdzJ1MnJUakw3NkZWQlV6dUEzalAvaVFmVnBseGZ4clVFdS9TbmdHME1Sb3VRSlRyL2lRL0ZzOElRVlVBUXVZTUZRQmw4VXY4R0oweDFRb1FzZjFCNjNGN2lEZzIyaGxpQzBTZ29RQUVtbUVDOE9vUDBVTHphaEJrQllqWTYzcURPaWFRQWhEU0dDSUEyeCtpalZZYkJGc0JVRXYrRXNoakFTc0FJU0lVZ0lCanVpV1NpRnpkWFcrMkcrL1BiM0RQK250eStxMFEyUmZBRnB0TDlrSy9ob1VNMmZyLzBXK05ZQXVrektYaFAvdXo1Qml3TFpEMnpEOHF2TzF6dEtwQkc0ZHNsV0FVa0JVZ1MvaTFQM01LNGo1akViQUtFTG5mUC9yWm11c0N4R29BVXdHeWg5L3lPNUNxd2FtclFCbXVBRm1lVEt0RnErV2wwb2pWWU9TVm9OSVZvR0w0cmIrcmVqVW91UWF3UG1rZWx5dTExd05US3E4TlNnbFFmYmJ5cHFJSVpWb2dodCtPU21PZHZnSjRud3pQdTdXV2JkQ2NLdFVnZFFYd0RqL0pmdzVTVm9Ec2cxNk56TlVnWFFWZytPT1M4ZHlrcVFBWkJ4ZVJiTlVnalFCdFFDbENiTElFdjVHdUJjbzJ3RWhrUERkcEtzQVVWb05ZWkF4K0k2VUFqUWdpdkQrL1BYcmRDL0RlUDV3NStJMTBMZEFTRlU1RU5xcU1lZW9LTUNWQ05VQ2dTdkFiWlFSb2VJamcwUVpadHovVmd0OG9KMEREV2dSTENkQTN4SXprMUJwZ3ZoUEg2cTk3OTFEOUJHb1NjZXhHdnhlb2JBV1lZbFVOTEtvQVg1WTFGZ2dCR2hZaWFFcWdIWDZrNERkS1hBYnRSZnRFYXdTVjRkY0JxZ0pNMGE0R0xiQm5xd0dEcnd0a0JiRGtUSUM5Ny9RaWNQcnQwQ0k1M2crMGhNZE5zNGl2Ujg5U0JVWmZBUklCYm9HODRLd2VDN1pBQkJvS1FLQ0JGWUFQelgyQVBCWkRCTWp3U0FUSmpjWUNXQVM0QWhBaUFpb0Fjc2xmQTNWTWhnbkFOb2hvb2RYK2lJQldBRUlhRklCQW95cEF4RFlJdGRjOVFzU3gwYzdRVUFGRzltYUVMREU2WTJ5QkNEVERCZURWSURJS3phcy9EYWdLRUxISGpRYmFHSmtJd0NwQWVySEtqTXArZ0t1NzYwK2JaQ295MzBoaU5YdDZmYThuV2hkWXpEYkV2RDY5dU80VUd4V1NpTHVucHNjMDR2ZDhmWHA1OVB3OUxUc0dOUUdxVklHZUlOemMzejUwQi9EYmp3ZjU4L3ZobjlrN25vclZRZlB5dXVtV1NPOHFjSlF6czErWEJOOStQUHovenc0SmVvK24vWHNHR2F6WGk2b0NaS2tDTHVXK2hYLzYzenNTbkQzT2pOVkIrK2Jxa0xkQ2JMRWtnSFVWV0RyUjJxSGZETmM4L0ZOV0pQQTRYdXVKWVduMjF4WkF2UVdLVWdYQ0xGNjN3dTlJeE9wZzhXaU55NDB3Nno3UEkvd1hmK2VDSUttTy8wSzg3aFdaQ0lENmtOeW5FQjJkL1lOV0NVdXNNbU5XQWVDZkVlb045WC8vZjVqV1RSR0xaMzdXVUY4RVQ0bXdJUGJnOWEvZkx2N1ptMS8vR0hnazhmQlkrRTR4WFFNZ3RrSm53ai9pNTdOaG5SSDNwMEVydDBLandsdFZnZ2puM2x5QUpjTWpETVJvcW9aMkZONnRUOE9sQWxTWFFDUDhsWVNLRW40Unh4YW82bnBBTTZpVkpKamltUVgzTmNDVVNsVkFpK3dTUkR2SHJnSlVhNFdzd3BsVmdraXRUOE85QWxTUndEcVUyU1NJR0g2UkFBS0k1SmNnV3hpdGlScCtrU0FDWk1Zei9CVHZQR0VFeUZnRklnUXd3akZzRVhuMkZ3a2tnRWd1Q1NJRkw5S3hUSWtlZnBGZ0FvamtrQ0JpNEtJZFU0Yndpd1FVUUNTMkJOR0NOaVhLc1dVSnY0ang0OUM5ckcybGRIMi9VSkNRYmVIMUNQWGFKQlUxL0NKQkswQmpiZUM4cWtHRzhIdVJNZndpd1FVUWlTTkJwdkNiMzVSTEduNlJCQUtJK0V1UUtmd05zOGN5RW9kZkpQZ2FZTTdXNjFXMDFnVVp3ejlGYXoyd05mbGtDYjlJTWdFYUVSZkhVN1NraWJJL09QdXNQeVZGQ3pUSHV5VkNwbEw0Ull4ZmpqdVN0VGZPdFJNVXBScFVvVXJMTXlkbEJXaGMzVjJ6R2hpd05ldG5EcjlJNGdvd2hkVkFoNnF6L3BRU0FvaHN2NFNYSXZTeFZ6MnJoRitra0FBaUh5ZUdJbHdHVXZBYnBRUm9VSVErRUlQZktDbEFZKzl2RTZDTGNPUkNRZVh3aXhRWFFHUy9Hb2pnaWNEZ2YxQmVnRWFQQ0NMMVpEaDZXUmdsK0EwWUFScEhSQkNwSVVQUHZSQzA0RGZnQkdnY0ZVRWtsd3k5TndCUmc5K0FGYUF4RFVDdkRBMHZLUzY5MjQwZStpa3Bud2JWNXZSZnRmejJZOHlCelBueis2a2ZaL0EvQTE4QmxwZ0hKY0tmZWIwRUJuNGZDbkNBM2piSkU0YStEd3JReVZMQXZLUmcyTTlEQVFid3FXWDYrM2VUN3lIblNiMGZnSkN6VUFBQ0RTK0RFbWhZQVFnMEZJQkFRd0VJTkJTQVFFTUJDRFFVZ0VCREFRZzBGSUJBUXdFSU5CU0FRRU1CQ0RRVWdFRHpMN1A2MmhRWGdLSmFBQUFBQUVsRlRrU3VRbUNDIiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9wbmciLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FZQUFBRDBlTlQ2QUFBYXZrbEVRVlI0bk8zZE9ZNGNXWllGVUdNaTFRQUJCb1ZDYWxRcFV1R1dlZ1ZkYThnZDFKWlNvVWlWV3FFRkVtaUFDMkFKa1Y0eCtCQTIvUEc5YzVSR2QxZGxXcGliL1h2dGZRdVBOM2R2My8xYUFJQlVmdXQ5QUFCQWV3b0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFnb0FBQ1NrQUFCQVFyLzNQZ0RnbUo5ZmYzVDU5OTU5dk8veTd3WEtlSFAzOXQydjNnY0JuT3NWN0tVcENqQW1CUUE2aVJMd1J5a0kwSWNDQUpVSituMFVBNmhMQVlDQ2hIMWRTZ0dVb3dEQUFRSy9MNFVBOWxNQVlDVmhQd2VsQU5aUkFPQUdvVDgzWlFDdVV3RGdDWUVmbTBJQWp4UUEwaFA2T1NrRFpLY0FrRkswMEgvLzZVUFRmOS8zTDkrYS92dHFVd2JJU0FFZ2pkbEN2M1dvMXpKYldWQUd5RUlCSUxUUlF6OUt5TzgxZWpsUUJvaE1BU0NjRVVNL2U5QnZOV0l4VUFhSVJnRWdoSkZDWDlqWE1WSXBVQWFJUUFGZ2FpTUV2OER2WTRSQ29BZ3dNd1dBNmZRT2ZZRS9wdDZGUUJsZ05nb0EwK2dWL0FKL1RyMEtnU0xBTEJRQWh0YzYrQVYrVEswTGdTTEE2QlFBaGlUMHFVa1pBQVdBd2JRTWZxSFBzclF0QTRvQUkxRUFHRUtyNEJmNjNOS3FEQ2dDakVBQm9Lc1d3Uy8wMmFORkdWQUU2RWtCb0F2Qnp5d1VBYUpTQUdpcWR2QUxmV3FxWFFZVUFWcFNBR2hDOEJPSklrQUVDZ0JWMVF4K29jOElhcFlCUllDYUZBQ3FxUlgrZ3A4UjFTb0NTZ0MxS0FBVUovakpUQkZnRmdvQXhkUUlmcUhQekdxVUFVV0FVaFFBRGhQOGNKc2l3SWdVQUE0cEhmNkNuOGhLRndFbGdDTVVBSFlSL0xDZklzQUlGQUEyS3huK2dwL01TaFlCSllDdEZBQldFL3hRaHlKQUQ3LzFQZ0RtSVB5aG5wTDNSTXMvcWMzY1RBQzRTZkJEVzZZQnRLSUFjRldwOEJmOHNGMnBJcUFFY0kwQ3dCbkJEK05RQktqRk93QThJL3hoTEtYdUplOEc4SklKQU11eUNINllnV2tBSlNrQUZBbC93US90bENnQ1NnQzJBSklUL2pDZkV2ZWNMUUZNQUpJUy9CQ0RhUUI3bVFBa0pQd2hEdE1BOWpJQlNPYm9qUzc0WVZ4SHB3RW1BYmtvQUVsNDZvY2NiQW13bGdLUWdLZCt5TWMwZ05kNEJ5QTQ0UTg1SGIxM3ZSY1Fud0lRbVBDSDNKUUFickVGRUpEZ0IxNnlKY0JMSmdEQkNIL2dFdE1BWGxJQUFoSCt3QzFLQUUvWkFnaml5STBwK0NHZkkxc0N0Z05pTUFFSVFQZ0RXeDI1OTAwQ1lsQUFKaWY4Z2IyVWdOeHNBVXhzN3cwbytJR1g5bTRKMkE2WWx3SXdJVS85UUEzZUM4akZGc0JraEQ5UWl5MkJYQlNBaVFoL29EWWxJQThGWUJMQ0gyaEZDY2hCQVppQThBZGFVd0xpOHhMZzRMenBEL1RtTndSaU1nRVltUEFIUnJCM1RURUpHSnNDTUNqaEQ0eEVDWWhIQVJpUThBZEdwQVRFb2dBTVJ2Z0RJMU1DNGxBQUJpTDhnUmtvQVRFb0FJTVEvc0JNbElENUtRQURFUDdBakpTQXVTa0FreEwrd0Fpc1JmTlNBRHJiMDRUZGNNQkk5cXhKcGdEOUtRQWRDWDk2Ky83bDIxKzlqNEVZbElENUtBQ2RDSDk2TzRXL0VrQXBTc0JjRklBT2hEOFFsUkl3RHdXZ01lSFBDRjQrOVpzQ1VKSVNNQWNGb0NIaEQyU2hCSXhQQVdoRStET0thMC83cGdDVXBnU01UUUVZbFBDbmh0ZENYZ21nTkd2WnVCU0FCalJhZ1BXc21XMG9BSlVaL1RPS3RVLzNwZ0NVWml0Z1RBcEFSY0tmVVFoMWVsTUN4cU1BVkNMOG1abkNRQTFLd0ZnVWdFRUlmMnJaRytaS0FEVlk2OGFoQUZTd3RiRzZJWUJNdHE1NXBnQjFLQUNGQ1g5R2N2UXAzaFNBV3BTQS9oU0FnbHlnakVSNEU0MDF0aXdGb0NOUC84eEFrYUFXYTJCZkNrQWhSditNcEhSb0t3SFVZaXVnSHdXZ0FPSFBTSVExczFFQytsQUFEbkloa29WaXdVaXN2Y2NwQUkxNStxY21JYzJzckkzdEtRQUhHUDJUallKQlRiWUMybElBZGhMK2pLWlZPQ3NCMUtRRXRLTUFRQUJDR2RoS0FkakIwei9aS1J6VVpBclFoZ0t3a2ZCbk5NS1lpSlNBK2hTQWlvUS90ZlVNZjhXRDJxeWhkU2tBRzJpWThKd1N3RWlzMGRzb0FDc1ovVE1hNFVzR3RnTHFVUUFxRVA1a29vaFFtelcxRGdWZ0JZMlMwUWhkdU02YXZZNEM4QXFqZjBZell2aVBlRXpFWWl1Z1BBV2dJT0ZQWmtvQXRWbGp5MUlBYnRBZ0dZMlFoZldzNGJjcEFGY1kvY04yQ2dxMTJRb29Sd0VvUVBqVHdpemhPc3R4TWk5cmJoa0t3QVVhSTZNUnFyQ2ZOZjB5QmVBZ1RSVE9LU3pVWnUwOVRnRjRRVk5rTk1JVWpyTzJuMU1BRHRCQXFXM204Si81MkptRE5mZ1lCZUNKTFEzUmhRZXZVd0tvYmN0YWJBcnduQUx3TnhjR294R2VVSjYxL3BFQ3NJT25mMWhQa2FFMmEvSStDc0NpRWJZZ0JMWnh2dkx5MmRkbnpYL3dlKzhEbUkybXVkL0xoZTM5cHcrZmV4M0x5Q0lHd1BjdjMvN3llVjhXOGZQdTRmMm5EOHYzTDk5Nkg4WlUwaGNBVGJBZmhTQVhKZUNCd0IvRHo2OC9scnVQOTcwUG82czNkMi9mL2VwOUVEMTU4NytkclF0ZnhyQ0lIZzQrMDlkbFBFY2xiWmtDS0FDSkM0RHdiK3RvdUVWZkdLT0gvNG5QOGJibzU2Y0ZKV0NkOUZzQXpPUFN3bXF4cEtjc3BZMlkwazRBUFAyMzEyS3huTFVRWkFzU245TjFzNTZiMFpnQ3ZNNEVnR2JlZi9yd3VmWUM2c1hDT2N6eVFtRHJZamJET1NHT2xBWEEwMzhlTXhTQ2JFLy9JL05aeExIbDF3S3ova1pBeWdKQVhxTVZnc3lCTThJVUlQUDVoM1FGd05NL1Q0MVdDS2hMNE9kaUNuQmJ1cGNBRllEK1pscUVheGFDbWM1RFRjN3hBK1d6RGk4RFhwZXFBQWovTWN5MEtMOVVhcEdlK1J6VTRMd3FBRFVwQVplbDJ3S0FJM3dYd1RobURuc1lnUUp3Z2FkL3R0ajZIb0hnT3JmbWhVRG5qYjM4b2FETDBoUUFmL1JuSEMyK0Q2QW5MeGFXRWZrYWVjazFNbzVNTHdPbUtRRFFTNllnTzhKNWdyWis2MzBBTFhqNUR5QzNMV3Q3bG9seGlnSUFBRHdYdmdCNCtoK1RQVTk0NEY1b3h4VGd1ZkFGQUFBNHB3RDh6ZE0vUUh6VytrZWhDMENHRVE0QWRVVFBrTkFGZ0xIWit5UTc5d0E5aFMwQVh2NEQ0Qkl2QXo0SVd3QUFnT3ZTRndCUC93RDVXUHVERm9ESUk1dG83SUdTbFd0L0hsRXpKV1FCQUFCdVMxMEFqSUFBOHNxZUFlRUtRTlJSRFFEOVJNeVdjQVZncmV6TmJ5VDJRc25HTlQrT3pGbVF0Z0FBUUdhaENrREVFUTBBWTRpV01hRUt3RnFaUno0QVBKYzFFMUlXQUFESUxrd0JpRGFheWNaTFVXVGhXcDlicEt3SlV3RFd5anJxQWVDNmpObVFyZ0FBQUVFS1FLU1JEQUJqaTVJNUlRckFXaGxIUERPeE4wcDBydkd4WmN1SVZBVUFBSGd3ZlFHSU1vb0JZQjRSc21mNkFyQld0dEVPQU50bHlvbzBCWUE1MkNNbEt0YzJvMUVBQUNDaHFRdEFoRDBZQU9ZMGV3Wk5YUURXeXJTbkE4QXhXVElqUlFGZ0x2WktpY1kxellpbUxRQ3pqMTRBbU4vTVdUUnRBUUFBOWd0ZkFMTHM1UUJRVG9ic0NGOEFtSk05VTZKd0xUTXFCUUFBRXBxeUFNejgwZ1VBc2N5YVNWTVdnTFV5N09FQVVFZjBEQWxkQUppYnZWTm01eHBtWkFvQUFDUTBYUUdZZGE4RmdMaG16S2JwQ3NCYTBmZHVBS2d2Y3BhRUxRREVZQStWV2JsMkdkM3Z2UThBcU8vdTQvMm1NUHI1OWNkZnRZNEZHSU1DQU1Gc0RmdTEvd3lsQUdLWnFnRE0rSklGdEZBaTlMZjhPNVFCT1BmejY0L2w3dU45NzhOWTdjM2QyM2UvZWgvRVdtc0xRT1NYTnJMNi91V2J3TG1nUmZEZm9naGNadjgvbnU5ZnZxMzZ6ODFVQUthYUFBRDlRLzhwVXdHWWw5OENnSW1NRlA0dmpYeHN3RGtUQUlabTlQOWdsbkE5SFdmMmFjRHB1clVWd01oTUFCaVc4SDh3Uy9nL05lTXgxK0FhWm1UVHZBUzQ1VGNBdkFRNE40dm1neWdobW4wYWNHSWFNTGUxTHdFdXl6d3ZBb2FiQUFqL3VRbi9CMUhDZjFsaS9TeEh1TGJuRmpGYnZBUEFFQ3lPanlJRzV0M0grODhtQWQ0TllDd0tBRjBKL3VjaWh2K0pFdkJJRVdBRTRiWUFtSWZ3Znk1eStKOWsrQm0zY0EvUWt3a0F6Vm4wem1VS1JwT0E1MHdENk1VRWdLYUUvN2xNNFgrUzhXZCtqWHVEMWt3QWFNTGlkbG5tSURRSk9HY2FRRXRUZkErQVB3STBMOEYvWGVid2Ywb0p1RTRSR0Ura1B3cGtDNEJxaEQ4YzR4NmlKbHNBRkdmUmVwMm4vMGUyQW02ekxVQXRDZ0RGQ1A1MWhQODVKZUIxaWdDbDJRS2dDT0VQYmJqWEtNVUVnRU1zUnR0NCtyL09GR0E5MHdCS01BRmdOK0cvamZCL25YTzBqWHVRSTB3QTJNeWlBK013RFdBdkJZRFZCRCtNU3hGZ0sxc0FyQ0w4anpIYVhzKzVPc2E5eWxyRFR3RFdmZ3NnZFZoTVlENm1BZjM5L1BwaitHOERERE1COERYQTVRbi9NanpSYnVlY2xlRWVMaTlTMWd3L0FhQTlpd2JFWVJyQU5Rb0EveVg0SVM1RmdKZkNiQUZ3alBDdnd5aDdQK2V1RHZjNkp5WUF5VmtNSUIvVEFKYkZCQ0ExNFErNVdRTnlNd0ZJeUUwUG5KZ0c1S1VBSkNMNGdXc1VnWHhzQVNRaC9OdnpFdHR4em1GNzFvbzhUQUNDY3pNRFc1a0c1S0FBQkNYNGdhTVVnZGhzQVFRay9JR1NyQ2t4bVFBRTRpWUZhakVOaU1jRUlBamhEN1JnclluREJHQnlia2FnTmRPQUdCU0F5WjF1UUVVQWFFWHd4MkFMSUFnM0pOQ0N0U1lPRTRCQVRBT0FXZ1IvUEFwQVFJb0FVSXJnajhzV1FHQnVYT0FJYTBoc0pnREJtUWIwOC9Qcmo3OThsLzB4UDcvK2NOMTJJUGh6VUFDU1VBU0Exd2orWEd3QkpPTUdCeTZ4TnVSakFwQ1FhUUJ3SXZqelVnQVNVd1FnTDhHUExRQXNCQlY1aVcwLzU2NGU5enpMWWdMQTMwd0RJRDdCejFNS0FNOG9BaENQNE9lU01Gc0EzNzk4NjMwSW9WZ3d5akhLM3M0NUs4ZTlYRmFrckJsK0FuRDM4WDc1K2ZWSDc4Tkl5VFFBNWlYNCs3cjdlTi83RUY0MWZBR2dQMFhnT044S3VKNm4vMk1FUDJ1RjJRS2dQZ3NMak0wOXloWW1BR3hpR2dEakVmenNZUUxBTGhhYzdZeTJYK2NjYmVkZVpDOFRBSFl6RGRqT3V3RFhDZjl0QkQ5SEtRQWNwZ2hBTzRLZlVtd0JVSXlGYVIxUHV1ZWNrM1hjWTVSa0FrQlJwZ0hyMkFwNEpQeGZKL2lwUVFHZ0NrVUFqaFA4MURURkZzRGFiMVNLOUJXTlVWakFydlBrNnh6YzR0NFp6OXFNbWVGYkFKZkZCSUFHVEFPdXk3d1ZJUHd2RS95MG9nRFFqQ0p3V2NZU0lQelBDWDVhbTJJTGdGZ3NkT2N5QldLbW4zVXQ5d1E5bUFEUWhXbkF1UXlUQU9IL25PQ25Kd1dBcmhTQjV5S1hBT0gvU1BBekFsc0FETUdDK0NoaVVFYjhtZlp5clRPS04zZHYzLzNxZlJCci9QejZZL1YvOXYybkR4V1BoTnBNQXg1RW1RUUkvd2VDZjI1YmZzMThsbDhEbktZQUxNdjZFcUFBeEtBSVBKaTFDQWorQjRJL2htamZBYkFzdGdBWW1JWHp3WXhCT3VNeDErQWFabVJlQW1Sb1hoSjhjQXJVMGFjQmd2K0I0R2NHSmdBd2taRURkdVJqQTg2WkFNQmtuZ1p0NzRtQTBJZDVoWHdKY0ZtOENCaEo5dkgvR3EyTGdPQi9uVzJBT0NMK0JzQ3lURFlCdVB0NHY2a0VRQll0cGdKQ0gyNmJLZnlYWmJJQ0FMenVVbEJ2TFFYQ0h1SlRBQ0FCZ1E2ODVMY0FHSnI5ZjJibDJtVjBZUXZBbHBjMkFPQ1N5Rmt5WFFHWTdTVUxBT0tiTVp1bUt3QUF3SEVLQU1PeWg4cnNYTU9NTEhRQmlMeDNBMEJkMFROa3lnSXc0MTRMQURITm1rbFRGZ0FBNEJnRmdDSFpPeVVLMXpLakNsOEFvdS9oQUZCZWh1d0lYd0FBZ0hQVEZvQlpYN29BSUk2WnMyamFBa0JjOWt5SnhqWE5pRklVZ0F4N09RQ1VrU1V6cGk0QU00OWVBSmpiN0JrMGRRRUFBUFpSQUJpS3ZWS2ljbTB6bWpRRklNdWVEZ0Q3WmNxSzZRdkE3SHN3QU13blF2Wk1Yd0FBZ08xU0ZZQk1vNTBaMlNNbE90ZjQyTEpsUklnQ0VHRVVBOEFjb21ST2lBSUFBR3lUcmdCa0cvRUE4THFNMlJDbUFFUVp5V1JsYjVRc1hPdHppNVExWVFvQUFMQmV5Z0tRY2RRRHdHVlpNeUZVQVlnMG1nRmdMTkV5SmxRQkFBRFdTVnNBc281OFJ1U2xLTEp4elk4amN4YUVLd0RSUmpRQTlCY3hXOElWZ0MweU56K0E3TEpuUU9vQ0FBQlpoU3dBRVVjMVVka0xKU3ZYL2p5aVprcklBckJGOWhFUVFFYldmZ1VBQUZJS1d3QzJqR3cwUVlBOHRxejVVY2YveXhLNEFEQStlNkJrNXg2Z3A5QUZJSEp6QTZDdTZCa1N1Z0JzWVJzQUlENXIvU01GQUFBU0NsOEF2QXc0Sm51ZjhNQzkwSTZYLzU0TFh3QUFnSE1wQ29BcEFFQnVudjdQL2Q3N0FDQzY5NTgrZkg3NnZ4djVYdVk4UVZ0cENzRGR4L3ZsNTljZnZRK0RKZjdDL2pMSTJDZFRJZmorNWR0ZnJwc3haSG42WDVaRUJXQ0w3MSsrTGU4L2ZlaDlHRXhpNjhMOS90T0h6NUhEYkk4MTV6QlRJYUFzVzd1WEtRQ3dnYWUwY1Z6NkxKUUNXTy9OM2R0M3Yzb2ZSRXRidGdGTUFlcVlhWkd1R2Znem5ZZWFuT01IeW1VZFh2NjdUZ0c0UVFFb2IvUUZ1ZlVpUFByNXFNMzVmazRKS0U4QnVDN2RGc0NXbHdHOUN4QmYrZ1gzano4L0wvLys1OUNoV0pMM0NISVIvcmVsS3dEa05scmdkMzBoOEk4L1AvLzNmM1lvQVNOOEZnb0JtYVhiQWppeEZkQkg2d1YyaEpCWm8zbnduTUwvcWNZbFlJYlB4dlU2TDAvL3J6TUJvSmtXaTZrRmRJVkw0WC82dnpjcUFiTjhUcTBuQkw0UGdKYlNGZ0R2QXNRUVpiSE05TjBBTTM5bXRnem00T2wvbmJRRmdQbk1IQnpEdVBiMC8vVC9uK2lsd0tOOEZ3RXpTL3NPd0lsM0Fkclp1akJtRFB5cTRmRmErRDlWcVFUNFRGK1g4UnlWNU9sL1BRVmc0OThIVUFMMldiTUlXdmdlVkNrQlc4TC9wRUlKOEJtN0YycmErcFcvMlF0QStpMEFmeVNvSDR0Y0kzdkMvL1RmSzFnQ2ZONFB2RWN3aHV6aHZ5d21BTXV5bUFLMDRPM21iWXFGd3Q3d2Y2cEFDZkRacitkZTJjZlQvM2EvOVQ2QUViZ1E2ck9nYlZQa2ZKVUkvNUwvSEZaeHI5Um56WCtnQU96Z1Qwc3l2SUZDVzZCUm16VjVId1hnYnhvaG94a3FPQWNxRkhDRXRmNlJBdkRFbGd0RDQyUll0Y0o2eHo5M3FCSkRTSDd0Yno4RjRBQWxnTm8yQjJqdEovVU4vM3poVDIzVzRHTVVnQmMwUkVhek9raGJqZWx0QnpBaGEvczVCZUFnRFpRaHRBN2xWLzU5bnY2cHpkcDduQUp3Z2FiSWFHNEdhcThuY3BNQUptRk52MHdCS0VBVHBZV0xKV0RBRVBiMFQyM1czRElVZ0N1Mk5rWVhKTTJORVA0dmprSDRVNXR2L0N0SEFiakJoY05vaGd6WUVZb0lYR0FOdjAwQktNZ1VnR1pHQzkwLy92dzhaRGtoRkd0c1dmNFkwQXIrV0JBaitmNS8vOVA3RUs1Ni80OS85VDRFZ2pMNkw4OEVZQVVYRXFNWU9meVhaZnpqSXdkcjlqb0tRQVhHVk5Rd1M3ak9jcHpNdzVwYWh3S3drdDhLb0NlaFNsWkcvL1VvQUJ1NHNPaGh4dkNmOFppWm56VjZHd1dnSWxNQWpwbzVTR2MrZHNaZ0RhMUxBZGpJVmdDc3B3U3dsOUYvZlFyQURrb0FMVVFKenlnL0IrMEkvellVQUJoUXROQ005dk5BQkFyQVRxWUExQkkxTEtQK1hKVGw2YjhkQmVBQUpZRFNoQ1NaQ2YrMkZJREdsQUN1eVJEK0dYNUc5ckUydHFjQUhLU0JVa0ttWU16MHMxS1B0ZmM0QmFBQVd3RWNrVEVRTS83TVhHZjAzNGNDVUlnU0FOc29BU3lMOE85SkFlaElDU0I3Q0diLytiT3pCdmFsQUJTa21iS0Y4SHZnUExDV05iWXNCYUF3V3dHc0lmU2Vjejd5TWZydlR3R29RQW5nRm1GSGRzSi9EQXJBSUpTQUhJVC9kYzVORHRhNmNTZ0FsZXhwckc2TTJBVGM2NXlqMlBhc2NaNys2MUVBS2xJQ09CRnM2emxYTVFuLzhTZ0FsU2tCc0owU0VJdndINU1DMElBTE9UZGh0by96bHBjMXN3MEZZRkNtQURFSXNXT2N2L2xaeThhbEFEUmlLeUFmNFVWMlJ2OWpVd0FhVWdMeUVQN2xPSmR6RXY3alV3QWFVd0xpRTFqbE9hZHpFZjV6VUFBNlVBTGlFbFQxT0xkekVQN3pVQUE2VVFMaUVWRDFPY2RqRS81elVRQTZVZ0pnT3lWZ1RNSi9QZ3BBWjBwQURFS3BMZWQ3TE1KL1RnckFwSlNBY1Fnak1yTVd6VXNCR01EZUp1ekc2MC80OStQYzk3ZDNEZkwwUHdZRllCQkt3SHdFVUg4K2czNkUvL3dVZ0lFb0FmTVFQT1B3V2JRbi9HTlFBQWFqQkl4UDRJekhaOUtPOEk5REFSaVFFakF1UVRNdW4wMTl3ajhXQldCUVNnQnNwd1RVSS96alVRQUdwZ1NNUmJpUWxmQ1A2YzNkMjNlL2VoOEV0LzM4K21QM2YvZjlwdzhGanlRdjRUK1g5Ly80Vis5RENPSEl3NFR3SDU4SndBU08zRWltQWNjSi8vbjR6STRUL3ZFcEFKTlFBdm9RSlBQeTJlMG4vSE5RQUNhaUJMUWxRT2JuTTl4TytPZWhBRXhHQ1doRGNNVGhzMXhQK09maUpjQ0o3WDA1MEl1QnR3bU1tTHdZZUpzMy9mUDV2ZmNCc04vZHgvdGRKZUIwb3lzQ2dLZit2R3dCVE02V1FGbWUvdVB5Mlo0VC9ya3BBQUVvQVdVSWlQaDh4bytFUDk0QkNPVElGd1l0Uys0dEFjR1FTK2IzQVk2V2Z1RWZod0lRakJJd3QraEZKSFB3amtENDg1UXRnR0NPM3FDMkJDQW00YzlMZmdzZ29OT051bmNhNExjRUlBN0J6elVtQUlHWkJrQnV3cDliRklEZ2xBRElTZmp6R2xzQUNlejl3cUFUV3dJd2p4S2xYZmpuWUFLUXhOM0hlOU1BQ0s3RVU3L3d6OE1FSUJuVEFJakhVejk3bUFBa1ZPSkdOdzJBTVFoLzlqSUJTT3JvcndvdWkya0E5Q1Q0T2NvRUlEblRBSmlQOEtjRUV3QU92eGV3TEtZQjBFS3BzaTM4V1JZRmdMK1YyQkpZRmtVQWFoRDgxR0FMZ0dkS0xSQzJCYUFNNFU4dEpnQ2NNUTJBL2dRL3RTa0FYRlhpM1lCbFVRUmdpNUxUTStIUExRb0FONVdhQml5TElnQzNDSDVhOHc0QXE1UmNVTHdmQU04SmYzb3dBV0ExMHdBb1MvRFRrd0xBWnFYZURWZ1dSWUNjU2svQmhEOTdLQURzVW5JYXNDeUtBRGtJZmthaUFIQkl5V25Bc2lnQ3hGVGp2UmZoejFFS0FJZVZuZ1lzaXlKQURJS2ZrU2tBRkZPekNDeUxNc0FjYXYyV2krQ25OQVdBNG1vVWdXVXhGV0JzZ3AvWktBQlVVL3I5Z0JORmdKSFUvRjRMNFU5TkNnQlYxWm9HTEl2dEFmcXAvV1ZXZ3A4V0ZBQ2FxRmtFbHNWVWdEWUVQNUVvQURUVnFnZ3NpekpBR1MyK3VscncwNE1DUUJlMWk4Q3ltQXB3ak9Bbk9nV0FybG9XZ1dWUkJyaXQxUitxRXZ5TVFBRmdDQzJLd0xJb0E1eHIrZGNwQlQ4alVRQVlTcXNpc0N6S1FHYXQveVMxNEdkRUNnQkRlcnBnS2dPVUlQVGhPUVdBNGJXY0NpekxlVkFvQkhOcUhmZ25ncDlaS0FCTW8zVVJPRkVJNXRBcjhFOEVQN05SQUpoTzYrMkJseFNDTWZRTy9HVVIrc3hOQVdCcXZhWUNUeWtFYll3UStDZUNud2dVQUVMb1BSVjQ2bEpRS1FYYmpCVDJKMEtmYUJRQXdobXBESnhjQzdUc3hXREVvSDlLNkJQWm03dTM3MzcxUGdob1laUXljTk1mZi9ZK2dycisvYy9lUi9BcW9VOFdKZ0NrTWVKa2dERUlmVEpTQUVoSkdVRG9rNTBDUUhyS1FCNUNIeDRwQVBERXk0QlFDT1ltOE9FNkJRQnVNQjJZajlDSGRSUUFXT2xTc0NnRmZRbDcyRThCZ0FOc0diUWw4S0VjQlFBS01pVW9SOWhEWFFvQVZIWXR5QlNEQjRJZStsQUFvSk9MMDRMLy85OE9SOUtPc0lkeC9OYjdBQUNBOWhRQUFFaElBUUNBaEJRQUFFaElBUUNBaEJRQUFFaElBUUNBaE43Y3ZYMzNxL2RCQUFCdG1RQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUlLQUFBa3BBQUFRRUwvQWRWTGZ6M003Nnl4QUFBQUFFbEZUa1N1UW1DQyIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIiwgInB1cnBvc2UiOiAiYW55IG1hc2thYmxlIn1dLCAiY2F0ZWdvcmllcyI6IFsicHJvZHVjdGl2aXR5IiwgInV0aWxpdGllcyJdLCAic2NyZWVuc2hvdHMiOiBbXX0=">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Process Improvement Log</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0d0f12;
+  --surface:  #141720;
+  --surface2: #1c2030;
+  --border:   #252c3f;
+  --accent:   #00e5ff;
+  --accent2:  #ff6b35;
+  --success:  #00ff88;
+  --text:     #dce8f0;
+  --muted:    #6b7a99;
+  --danger:   #ff4757;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bot: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+body {
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.app-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: calc(var(--safe-top) + 10px) 16px 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 50;
+}
+
+.app-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), transparent);
+  opacity: 0.5;
+}
+
+.logo {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.logo-badge {
+  background: rgba(0,229,255,0.12);
+  border: 1px solid rgba(0,229,255,0.35);
+  border-radius: 4px;
+  width: 30px; height: 30px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hdr-count {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.hdr-count strong { color: var(--accent); font-weight: 400; }
+
+/* ── NAV TABS ── */
+.tab-bar {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 11px 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── MAIN SCROLL AREA ── */
+.app-body {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* ── VIEWS ── */
+.view { display: none; padding: 16px; }
+.view.active { display: block; }
+
+/* ── SECTION LABEL ── */
+.section-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.63rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  padding: 9px 11px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 66px;
+  line-height: 1.5;
+}
+
+input[type="date"] { color-scheme: dark; }
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7a99'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+select option { background: #1c2030; }
+
+.form-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.btn-primary { background: var(--accent); color: #000; }
+.btn-primary:hover { background: #33eaff; box-shadow: 0 0 16px rgba(0,229,255,0.35); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+
+.btn-icon {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--muted);
+  padding: 5px 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.15s;
+}
+
+.btn-icon.edit:hover { color: var(--accent); border-color: rgba(0,229,255,0.3); background: rgba(0,229,255,0.07); }
+.btn-icon.del:hover  { color: var(--danger); border-color: rgba(255,71,87,0.3); background: rgba(255,71,87,0.07); }
+
+/* ── SUMMARY STRIP ── */
+.summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-label {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.25rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* ── SEARCH / FILTER BAR ── */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.search-wrap {
+  flex: 1;
+  min-width: 140px;
+  position: relative;
+}
+
+.search-wrap input { padding-left: 30px; }
+
+.search-icon {
+  position: absolute;
+  left: 9px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+select.filter-sm { width: auto; min-width: 100px; font-size: 0.8rem; padding: 8px 26px 8px 9px; }
+
+/* ── ENTRIES ── */
+.entries-list { display: flex; flex-direction: column; gap: 10px; }
+
+.entry-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.entry-card.expanded { border-color: rgba(0,229,255,0.35); }
+
+.entry-head {
+  padding: 13px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.entry-head:active { background: var(--surface2); }
+
+.entry-left { flex: 1; min-width: 0; }
+
+.entry-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: var(--text);
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entry-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.chip {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  padding: 2px 6px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.chip.date  { background: rgba(107,122,153,0.15); color: var(--muted); border: 1px solid rgba(107,122,153,0.2); }
+.chip.cat   { background: rgba(0,229,255,0.08); color: var(--accent); border: 1px solid rgba(0,229,255,0.2); }
+.chip.tpart { background: rgba(255,107,53,0.08); color: var(--accent2); border: 1px solid rgba(255,107,53,0.2); }
+.chip.tset  { background: rgba(0,255,136,0.08); color: var(--success); border: 1px solid rgba(0,255,136,0.2); }
+
+.entry-actions-head {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.chevron {
+  display: inline-block;
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--muted);
+  transition: transform 0.2s;
+  font-size: 0.7rem;
+  line-height: 16px;
+  text-align: center;
+}
+
+.entry-card.expanded .chevron { transform: rotate(180deg); }
+
+.entry-body {
+  display: none;
+  padding: 0 14px 14px;
+  border-top: 1px solid var(--border);
+}
+
+.entry-card.expanded .entry-body { display: block; }
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cmp-box {
+  background: var(--bg);
+  border-radius: 5px;
+  padding: 9px 11px;
+}
+
+.cmp-box.before { border-left: 3px solid var(--accent2); }
+.cmp-box.after  { border-left: 3px solid var(--success); }
+
+.field-lbl {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.field-val {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text);
+  white-space: pre-wrap;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.detail-grid .full { grid-column: 1 / -1; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: var(--muted);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  line-height: 2.2;
+}
+
+.empty-icon { font-size: 2.2rem; opacity: 0.25; margin-bottom: 8px; }
+
+/* ── MODAL ── */
+.modal-backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: var(--safe-bot);
+}
+
+.modal-backdrop.open { display: flex; }
+
+.modal-sheet {
+  background: var(--surface);
+  border-radius: 14px 14px 0 0;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  max-width: 600px;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 20px 18px calc(var(--safe-bot) + 20px);
+  position: relative;
+}
+
+.modal-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  border-radius: 14px 14px 0 0;
+}
+
+.modal-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.modal-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* ── EXPORT VIEW ── */
+.export-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.export-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.export-card:hover { border-color: rgba(0,229,255,0.3); background: var(--surface2); }
+
+.export-icon {
+  font-size: 1.6rem;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.export-info { flex: 1; }
+
+.export-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.export-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+.import-zone {
+  border: 2px dashed var(--border);
+  border-radius: 7px;
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 2;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  margin-top: 8px;
+}
+
+.import-zone:hover { border-color: var(--accent); color: var(--text); }
+
+#import-file { display: none; }
+
+.danger-zone {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.danger-zone .section-label { color: rgba(255,71,87,0.6); }
+.danger-zone .section-label::after { background: rgba(255,71,87,0.2); }
+
+.btn-danger-full {
+  width: 100%;
+  background: rgba(255,71,87,0.08);
+  border: 1px solid rgba(255,71,87,0.3);
+  color: var(--danger);
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 11px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger-full:hover { background: rgba(255,71,87,0.15); border-color: var(--danger); }
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: calc(var(--safe-bot) + 20px);
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--success);
+  color: #000;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 20px;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.28s;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── INSTALL BANNER ── */
+.install-banner {
+  display: none;
+  background: linear-gradient(135deg, rgba(0,229,255,0.1), rgba(0,229,255,0.04));
+  border: 1px solid rgba(0,229,255,0.25);
+  border-radius: 7px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  align-items: center;
+  gap: 12px;
+}
+
+.install-banner.visible { display: flex; }
+
+.install-text {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+.install-text strong {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+
+@media (min-width: 480px) {
+  .view { padding: 20px; max-width: 700px; margin: 0 auto; }
+  .summary-strip { grid-template-columns: repeat(5, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="app-header">
+  <div class="logo">
+    <div class="logo-badge">CNC</div>
+    ImprovLog
+  </div>
+  <div class="header-right">
+    <span class="hdr-count">Entries: <strong id="hdr-total">0</strong></span>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('log')" id="tab-log">📋 Log</button>
+  <button class="tab-btn" onclick="switchTab('new')" id="tab-new">＋ New</button>
+  <button class="tab-btn" onclick="switchTab('export')" id="tab-export">⇅ Data</button>
+</div>
+
+<div class="app-body">
+
+  <!-- ── LOG VIEW ── -->
+  <div class="view active" id="view-log">
+    <div id="install-banner" class="install-banner">
+      <div class="install-text">
+        <strong>Install App</strong>
+        Add to your home screen for full offline access
+      </div>
+      <button class="btn btn-primary" id="install-btn" style="padding:7px 14px;font-size:0.72rem;">Install</button>
+    </div>
+
+    <div id="summary-strip" class="summary-strip" style="display:none;"></div>
+
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" placeholder="Search…" oninput="renderEntries()">
+      </div>
+      <select class="filter-sm" id="cat-filter" onchange="renderEntries()">
+        <option value="">All</option>
+      </select>
+      <select class="filter-sm" id="sort-sel" onchange="renderEntries()">
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+    </div>
+
+    <div class="entries-list" id="entries-list"></div>
+  </div>
+
+  <!-- ── NEW ENTRY VIEW ── -->
+  <div class="view" id="view-new">
+    <div class="section-label">New Entry</div>
+    <div class="form-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="f-date">
+        </div>
+        <div class="form-group">
+          <label>Category / Machine</label>
+          <input type="text" id="f-cat" placeholder="e.g. Mazak, Fixturing…">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>What I Did</label>
+          <textarea id="f-what" placeholder="Describe the change or improvement…"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>What It Improved</label>
+          <textarea id="f-improved" placeholder="Cycle time, quality, safety, scrap…" style="min-height:54px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Process Before</label>
+          <textarea id="f-before" placeholder="Old process…"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Process After</label>
+          <textarea id="f-after" placeholder="New process…"></textarea>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Time Savings / Part</label>
+          <input type="text" id="f-tpart" placeholder="e.g. 45 sec, 2 min">
+        </div>
+        <div class="form-group">
+          <label>Time Savings / Setup</label>
+          <input type="text" id="f-tsetup" placeholder="e.g. 15 min, 1 hr">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label>Notes (optional)</label>
+          <textarea id="f-notes" placeholder="Part #, job #, extra context…" style="min-height:50px;"></textarea>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-ghost" onclick="clearNewForm()">Clear</button>
+        <button class="btn btn-primary" onclick="saveNew()">Save Entry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DATA VIEW ── -->
+  <div class="view" id="view-export">
+    <div class="section-label">Export</div>
+    <div class="export-options">
+      <div class="export-card" onclick="exportJSON()">
+        <div class="export-icon">📦</div>
+        <div class="export-info">
+          <div class="export-title">Export as JSON</div>
+          <div class="export-desc">Full backup. Can be re-imported to restore all entries on any device.</div>
+        </div>
+      </div>
+      <div class="export-card" onclick="exportCSV()">
+        <div class="export-icon">📊</div>
+        <div class="export-info">
+          <div class="export-title">Export as CSV</div>
+          <div class="export-desc">Open in Excel or Google Sheets for reports or presentations.</div>
+        </div>
+      </div>
+      <div class="export-card" onclick="exportText()">
+        <div class="export-icon">📄</div>
+        <div class="export-info">
+          <div class="export-title">Export as Text</div>
+          <div class="export-desc">Human-readable summary. Easy to paste into an email or doc.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:24px;">Import</div>
+    <div class="import-zone" onclick="document.getElementById('import-file').click()">
+      <div>📂</div>
+      Tap to import a JSON backup<br>
+      <span style="font-size:0.72rem;opacity:0.6;">This will merge entries — no data will be lost</span>
+    </div>
+    <input type="file" id="import-file" accept=".json" onchange="importJSON(event)">
+
+    <div class="danger-zone">
+      <div class="section-label">Danger Zone</div>
+      <button class="btn-danger-full" onclick="clearAll()">Delete All Entries</button>
+    </div>
+  </div>
+
+</div><!-- end app-body -->
+
+<!-- ── EDIT MODAL ── -->
+<div class="modal-backdrop" id="edit-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">Edit Entry</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="e-date">
+      </div>
+      <div class="form-group">
+        <label>Category / Machine</label>
+        <input type="text" id="e-cat">
+      </div>
+    </div>
+    <div class="form-row" style="margin-top:10px;">
+      <div class="form-group full">
+        <label>What I Did</label>
+        <textarea id="e-what"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label>What It Improved</label>
+        <textarea id="e-improved" style="min-height:54px;"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Process Before</label>
+        <textarea id="e-before"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Process After</label>
+        <textarea id="e-after"></textarea>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Time / Part</label>
+        <input type="text" id="e-tpart">
+      </div>
+      <div class="form-group">
+        <label>Time / Setup</label>
+        <input type="text" id="e-tsetup">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full">
+        <label>Notes</label>
+        <textarea id="e-notes" style="min-height:50px;"></textarea>
+      </div>
+    </div>
+    <div class="form-actions" style="margin-top:14px;">
+      <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveEdit()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────
+const KEY = 'cnc_improv_v2';
+let entries = [];
+let editingId = null;
+let deferredInstall = null;
+
+function load() {
+  try { entries = JSON.parse(localStorage.getItem(KEY)) || []; }
+  catch { entries = []; }
+}
+
+function persist() {
+  localStorage.setItem(KEY, JSON.stringify(entries));
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+}
+
+function esc(s) {
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function fmtDate(d) {
+  if (!d) return 'No date';
+  try { const [y,m,dd] = d.split('-'); return `${m}/${dd}/${y}`; }
+  catch { return d; }
+}
+
+// ── TABS ─────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+  if (name === 'log') renderAll();
+}
+
+// ── SAVE NEW ─────────────────────────────────────────────────────
+function saveNew() {
+  const what = document.getElementById('f-what').value.trim();
+  if (!what) { showToast('Fill in "What I Did" at minimum', '#ff4757'); return; }
+  const en = {
+    id: uid(),
+    date: document.getElementById('f-date').value,
+    category: document.getElementById('f-cat').value.trim(),
+    what,
+    improved: document.getElementById('f-improved').value.trim(),
+    before: document.getElementById('f-before').value.trim(),
+    after: document.getElementById('f-after').value.trim(),
+    timePart: document.getElementById('f-tpart').value.trim(),
+    timeSetup: document.getElementById('f-tsetup').value.trim(),
+    notes: document.getElementById('f-notes').value.trim(),
+    created: Date.now()
+  };
+  entries.unshift(en);
+  persist();
+  clearNewForm();
+  showToast('Entry saved!');
+  switchTab('log');
+}
+
+function clearNewForm() {
+  ['f-date','f-cat','f-what','f-improved','f-before','f-after','f-tpart','f-tsetup','f-notes']
+    .forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-date').value = today();
+}
+
+function today() { return new Date().toISOString().split('T')[0]; }
+
+// ── RENDER ────────────────────────────────────────────────────────
+function renderAll() {
+  updateHeader();
+  renderSummary();
+  renderCatFilter();
+  renderEntries();
+}
+
+function updateHeader() {
+  document.getElementById('hdr-total').textContent = entries.length;
+}
+
+function renderSummary() {
+  const strip = document.getElementById('summary-strip');
+  if (entries.length === 0) { strip.style.display = 'none'; return; }
+  strip.style.display = 'grid';
+  const cats = new Set(entries.map(e=>e.category).filter(Boolean)).size;
+  const wp = entries.filter(e=>e.timePart && e.timePart.toLowerCase()!=='none').length;
+  const ws = entries.filter(e=>e.timeSetup && e.timeSetup.toLowerCase()!=='none').length;
+  strip.innerHTML = `
+    <div class="stat-box"><div class="stat-label">Total</div><div class="stat-val">${entries.length}</div></div>
+    <div class="stat-box"><div class="stat-label">Cats</div><div class="stat-val">${cats}</div></div>
+    <div class="stat-box"><div class="stat-label">Part Savings</div><div class="stat-val">${wp}</div></div>
+    <div class="stat-box"><div class="stat-label">Setup Savings</div><div class="stat-val">${ws}</div></div>
+    <div class="stat-box"><div class="stat-label">Total Savings</div><div class="stat-val">${wp+ws}</div></div>
+  `;
+}
+
+function renderCatFilter() {
+  const sel = document.getElementById('cat-filter');
+  const cur = sel.value;
+  const cats = [...new Set(entries.map(e=>e.category).filter(Boolean))].sort();
+  sel.innerHTML = '<option value="">All</option>' +
+    cats.map(c=>`<option value="${esc(c)}"${c===cur?' selected':''}>${esc(c)}</option>`).join('');
+}
+
+function renderEntries() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const cat = document.getElementById('cat-filter').value;
+  const sort = document.getElementById('sort-sel').value;
+
+  let list = [...entries];
+  if (cat) list = list.filter(e=>e.category===cat);
+  if (q) list = list.filter(e=>
+    [e.what,e.improved,e.before,e.after,e.category,e.notes].join(' ').toLowerCase().includes(q)
+  );
+  sort==='oldest'
+    ? list.sort((a,b)=>(a.date||'')>(b.date||'')?1:-1)
+    : list.sort((a,b)=>(a.date||'')<(b.date||'')?1:-1);
+
+  const container = document.getElementById('entries-list');
+  if (!list.length) {
+    container.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">⚙</div>
+      ${entries.length===0?'No entries yet.<br>Tap ＋ New to add your first improvement.':'No entries match your search.'}
+    </div>`;
+    return;
+  }
+
+  container.innerHTML = list.map(en => `
+    <div class="entry-card" id="card-${en.id}">
+      <div class="entry-head" onclick="toggleCard('${en.id}')">
+        <div class="entry-left">
+          <div class="entry-title">${esc(en.what)||'—'}</div>
+          <div class="entry-chips">
+            <span class="chip date">${fmtDate(en.date)}</span>
+            ${en.category?`<span class="chip cat">${esc(en.category)}</span>`:''}
+            ${en.timePart&&en.timePart.toLowerCase()!=='none'?`<span class="chip tpart">⏱${esc(en.timePart)}/pt</span>`:''}
+            ${en.timeSetup&&en.timeSetup.toLowerCase()!=='none'?`<span class="chip tset">⏱${esc(en.timeSetup)}/su</span>`:''}
+          </div>
+        </div>
+        <div class="entry-actions-head" onclick="event.stopPropagation()">
+          <button class="btn-icon edit" onclick="openEdit('${en.id}')">Edit</button>
+          <button class="btn-icon del" onclick="deleteEntry('${en.id}')">Del</button>
+        </div>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="entry-body">
+        ${en.improved?`<div style="margin-top:10px;"><div class="field-lbl">What It Improved</div><div class="field-val">${esc(en.improved)}</div></div>`:''}
+        <div class="compare-row">
+          <div class="cmp-box before"><div class="field-lbl">Before</div><div class="field-val">${esc(en.before)||'<span style="color:var(--muted)">—</span>'}</div></div>
+          <div class="cmp-box after"><div class="field-lbl">After</div><div class="field-val">${esc(en.after)||'<span style="color:var(--muted)">—</span>'}</div></div>
+        </div>
+        ${(en.timePart||en.timeSetup)?`
+        <div class="detail-grid">
+          <div><div class="field-lbl">Time / Part</div><div class="field-val">${esc(en.timePart)||'—'}</div></div>
+          <div><div class="field-lbl">Time / Setup</div><div class="field-val">${esc(en.timeSetup)||'—'}</div></div>
+        </div>`:''}
+        ${en.notes?`<div style="margin-top:10px;"><div class="field-lbl">Notes</div><div class="field-val">${esc(en.notes)}</div></div>`:''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCard(id) {
+  document.getElementById('card-'+id)?.classList.toggle('expanded');
+}
+
+// ── EDIT ─────────────────────────────────────────────────────────
+function openEdit(id) {
+  const en = entries.find(x=>x.id===id); if(!en) return;
+  editingId = id;
+  document.getElementById('e-date').value = en.date||'';
+  document.getElementById('e-cat').value = en.category||'';
+  document.getElementById('e-what').value = en.what||'';
+  document.getElementById('e-improved').value = en.improved||'';
+  document.getElementById('e-before').value = en.before||'';
+  document.getElementById('e-after').value = en.after||'';
+  document.getElementById('e-tpart').value = en.timePart||'';
+  document.getElementById('e-tsetup').value = en.timeSetup||'';
+  document.getElementById('e-notes').value = en.notes||'';
+  document.getElementById('edit-modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('edit-modal').classList.remove('open');
+  editingId = null;
+}
+
+function saveEdit() {
+  if (!editingId) return;
+  const idx = entries.findIndex(x=>x.id===editingId); if(idx===-1) return;
+  entries[idx] = { ...entries[idx],
+    date: document.getElementById('e-date').value,
+    category: document.getElementById('e-cat').value.trim(),
+    what: document.getElementById('e-what').value.trim(),
+    improved: document.getElementById('e-improved').value.trim(),
+    before: document.getElementById('e-before').value.trim(),
+    after: document.getElementById('e-after').value.trim(),
+    timePart: document.getElementById('e-tpart').value.trim(),
+    timeSetup: document.getElementById('e-tsetup').value.trim(),
+    notes: document.getElementById('e-notes').value.trim(),
+  };
+  persist(); closeModal(); renderAll();
+  showToast('Changes saved!');
+}
+
+function deleteEntry(id) {
+  if (!confirm('Delete this entry?')) return;
+  entries = entries.filter(x=>x.id!==id);
+  persist(); renderAll();
+  showToast('Deleted', '#ff6b35');
+}
+
+// ── EXPORT ───────────────────────────────────────────────────────
+function dl(content, filename, mime) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type: mime}));
+  a.download = filename;
+  a.click();
+}
+
+function exportJSON() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  dl(JSON.stringify(entries, null, 2), `improv-log-${today()}.json`, 'application/json');
+  showToast('JSON exported!');
+}
+
+function exportCSV() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  const cols = ['date','category','what','improved','before','after','timePart','timeSetup','notes'];
+  const headers = ['Date','Category','What I Did','What It Improved','Process Before','Process After','Time/Part','Time/Setup','Notes'];
+  const rows = entries.map(e => cols.map(c => `"${(e[c]||'').replace(/"/g,'""')}"`).join(','));
+  dl([headers.join(','), ...rows].join('\n'), `improv-log-${today()}.csv`, 'text/csv');
+  showToast('CSV exported!');
+}
+
+function exportText() {
+  if (!entries.length) { showToast('No entries to export', '#ff6b35'); return; }
+  const lines = entries.map((e,i) => [
+    `=== ${i+1}. ${e.what||'Untitled'} ===`,
+    `Date: ${fmtDate(e.date)}`,
+    e.category ? `Category: ${e.category}` : '',
+    e.improved ? `Improved: ${e.improved}` : '',
+    e.before ? `Before: ${e.before}` : '',
+    e.after ? `After: ${e.after}` : '',
+    e.timePart ? `Time/Part: ${e.timePart}` : '',
+    e.timeSetup ? `Time/Setup: ${e.timeSetup}` : '',
+    e.notes ? `Notes: ${e.notes}` : '',
+    ''
+  ].filter(Boolean).join('\n')).join('\n');
+  dl(`PROCESS IMPROVEMENT LOG\nExported: ${new Date().toLocaleDateString()}\n\n${lines}`,
+     `improv-log-${today()}.txt`, 'text/plain');
+  showToast('Text exported!');
+}
+
+function importJSON(evt) {
+  const file = evt.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error();
+      const existingIds = new Set(entries.map(x=>x.id));
+      const merged = imported.filter(x=>!existingIds.has(x.id));
+      entries = [...entries, ...merged];
+      persist(); renderAll();
+      showToast(`Imported ${merged.length} entries!`);
+    } catch {
+      showToast('Invalid backup file', '#ff4757');
+    }
+  };
+  reader.readAsText(file);
+  evt.target.value = '';
+}
+
+function clearAll() {
+  if (!entries.length) { showToast('Nothing to delete', '#ff6b35'); return; }
+  if (!confirm(`Delete ALL ${entries.length} entries? This cannot be undone.`)) return;
+  entries = []; persist(); renderAll();
+  showToast('All entries deleted', '#ff4757');
+}
+
+// ── TOAST ────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, bg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = bg || 'var(--success)';
+  t.style.color = bg ? '#fff' : '#000';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ── PWA INSTALL ───────────────────────────────────────────────────
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredInstall = e;
+  document.getElementById('install-banner').classList.add('visible');
+});
+
+document.getElementById('install-btn').addEventListener('click', () => {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(r => {
+    if (r.outcome === 'accepted') {
+      document.getElementById('install-banner').classList.remove('visible');
+      showToast('App installed! 🎉');
+    }
+    deferredInstall = null;
+  });
+});
+
+window.addEventListener('appinstalled', () => {
+  document.getElementById('install-banner').classList.remove('visible');
+});
+
+// Close modal on backdrop tap
+document.getElementById('edit-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ── SERVICE WORKER ────────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      const swCode = "const CACHE_NAME = 'cnc-improv-log-v1';
+const ASSETS = [
+  './index.html',
+  './manifest.json',
+  'https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Barlow:wght@300;400;500&display=swap'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
+      // Cache local assets; font may fail in some environments, that's OK
+      return cache.addAll(['./index.html', './manifest.json']).catch(() => {});
+    })
+  );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+    )
+  );
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(cached => {
+      if (cached) return cached;
+      return fetch(event.request).then(response => {
+        // Cache successful GET requests
+        if (event.request.method === 'GET' && response && response.status === 200) {
+          const clone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        }
+        return response;
+      }).catch(() => {
+        // If offline and not cached, return index for navigation requests
+        if (event.request.mode === 'navigate') {
+          return caches.match('./index.html');
+        }
+      });
+    })
+  );
+});
+";
+      const blob = new Blob([swCode], {type: 'application/javascript'});
+      const swUrl = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(swUrl).catch(()=>{});
+    });
+  });
+}
+
+// ── INIT ─────────────────────────────────────────────────────────
+document.getElementById('f-date').value = today();
+load();
+renderAll();
+</script>
+</body>
+</html>
